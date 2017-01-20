@@ -130,11 +130,12 @@ function check_model(){
 }
 
 function check_sale(){
+  clean();
   var cnt=0;
   //tomar valores de los campos
   cnt= check_comp() + check_dis() + check_model();
 
-  if(rst < 0 ){
+  if((coins - cnt) < 0 ){
     document.getElementById('resto-error').innerHTML= cnt - coins;
     document.getElementById('final-error').style.display="block";
   } else {
@@ -142,4 +143,12 @@ function check_sale(){
     document.getElementById('resto-bueno').innerHTML= coins - cnt;
     document.getElementById('final-bueno').style.display="block";
   }
+}
+
+function clean(){
+  document.getElementById('warning-comp').style.display="none";
+  document.getElementById('warning-dis').style.display="none";
+  document.getElementById('warning-model').style.display="none";
+  document.getElementById('final-bueno').style.display="none";
+  document.getElementById('final-bueno').style.display="none";
 }
