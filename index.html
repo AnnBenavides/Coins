@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  	<meta name="description" content="documento de ejemplo" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="coins.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1>Calculador de BitCoins</h1>
+      <p>Plataforma para calcular tu compra de compañero de equipo</p>
+    </div>
+
+    <div class="container">
+      <div class="alert alert-info"><strong>Instrucciones</strong>
+        <ol>
+          <li>Ingrese su RUT</li>
+          <li>Seleccione el taller que tomó</li>
+          <li>Obtenga sus <span class="glyphicon glyphicon-bitcoin" aria-hidden="true"></span> BitCoins</li>
+          <li>Comience su compra</li>
+          <li>Sólo puede comprar compañeros de talleres diferentes al suyo</li>
+          <li>Use el botón de validación para corroborar si su compra cumple las reglas</li>
+        </ol>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Ingreso</div>
+        <div class="panel-body">
+          <form name="ingreso">
+            <div class="row">
+              <div class="col-sm-4">
+                RUT <input type="text" id="rut" />
+                <h6><i>Ingrese su RUT en formato 12345678-9</i></h6>
+              </div>
+              <div class="col-sm-4">
+                Taller
+                <select id="workshop">
+                  <option value="1">Computación</option>
+                  <option value="2">Diseño</option>
+                  <option value="3">Modelamiento Digital</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <!-- BOTON GENERICO -->
+                <button type="button" class="btn btn-primary" onClick="check_my_coins()">
+                  <span class="glyphicon glyphicon-bitcoin"></span>
+                  Pedir BitCoins
+                </button>   <button type="reset" class="btn btn-default">
+                  <span class="glyphicon glyphicon-erase"></span>
+                  Todo de nuevo
+                </button>
+              </div>
+            </div>
+          </form>
+            <h2>Tus BitCoins son <span id="my-coins">0</span> <span class="glyphicon glyphicon-bitcoin"></span></h2>
+
+        </div>
+      </div><!-- Fin panel ingreso -->
+
+      <form name="cotizaciones">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Taller de Diseño</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre <br>
+              <select id="d01">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d02">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d03">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre <br>
+              <select id="d04">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d05">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d06">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre <br>
+              <select id="d07">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d08">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d09">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre <br>
+              <select id="d10">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d11">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d12">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre <br>
+              <select id="d13">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d14">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="d15">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+        </div>
+        <span id="warning-dis" style="display:none;">
+          <div class="alert alert-danger">
+            <strong>Error!</strong>
+             No puedes comprar compañeros de tu mismo taller
+           </div>
+        </span>
+      </div><!-- Fin panel Taller de diseño -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Taller de Modelamiento Digital</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre <br>
+              <select id="m01">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="m02">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/.jpg" class="img-rounded" width="120"/><br>
+              Nombre<br>
+              <select id="m03">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+        </div>
+        <span id="warning-model" style="display:none;">
+          <div class="alert alert-danger">
+            <strong>Error!</strong>
+             No puedes comprar compañeros de tu mismo taller
+           </div>
+        </span>
+      </div><!-- Fin panel Taller modelamiento -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Taller de Comptación</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/02Thaiz.jpg" class="img-rounded" width="120"/><br>
+              Thaiz Pino<br>
+              <select id="c01">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/03Andrea.jpg" class="img-rounded" width="120"/><br>
+              Andrea Arredondo<br>
+              <select id="c02">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/05Tomas.jpg" class="img-rounded" width="120"/><br>
+              Tomas Herrera<br>
+              <select id="c03">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/09Mauricio.jpg" class="img-rounded" width="120"/><br>
+              Mauricio Mercado<br>
+              <select id="c04">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/19Ignacio.jpg" class="img-rounded" width="120"/><br>
+              Ignacio Candia<br>
+              <select id="c05">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/23Felipe.jpg" class="img-rounded" width="120"/><br>
+              Felipe Sanchez<br>
+              <select id="c06">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/28Daniela.jpg" class="img-rounded" width="120"/><br>
+              Daniela Lebtun<br>
+              <select id="c07">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/30Catalina.jpg" class="img-rounded" width="120"/><br>
+              Catalina Arteaga<br>
+              <select id="c08">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/31Alonso.jpg" class="img-rounded" width="120"/><br>
+              Alonso Venegas<br>
+              <select id="c09">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/39Vicente.jpg" class="img-rounded" width="120"/><br>
+              Vicente Sule<br>
+              <select id="c10">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/40Octavio.jpg" class="img-rounded" width="120"/><br>
+              Octavio Cid<br>
+              <select id="c11">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/41Elias.jpg" class="img-rounded" width="120"/><br>
+              Elias Sabja<br>
+              <select id="c12">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><center>
+              <img src="fotos/c/42Elena.jpg" class="img-rounded" width="120"/><br>
+              Elena Acosta<br>
+              <select id="c13">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <span class="glyphicon glyphicon-bitcoin"></span>
+            </center></div>
+            <div class="col-sm-4"></div>
+          </div>
+        </div>
+        <span id="warning-comp" style="display:none;">
+          <div class="alert alert-danger">
+            <strong>Error!</strong>
+             No puedes comprar compañeros de tu mismo taller
+           </div>
+        </span>
+      </div><!-- Fin panel taller de computación -->
+
+      <center>
+        <!-- BOTON GENERICO -->
+        <button type="button" class="btn btn-primary" onClick="check_sale()">
+          <span class="glyphicon glyphicon-bitcoin"></span>
+          Chequear cotización
+        </button>
+
+        <!-- BOTON RESET -->
+        <button type="reset" class="btn btn-info">
+          <span class="glyphicon glyphicon-erase"></span>
+          Todo de nuevo
+        </button>
+        <br>
+        <span id="final-error" style="display:none;">
+          <div class="alert alert-danger">
+            <strong>Error!</strong>
+            Haz gastado <span name="resto"> </span> BitCoins de más
+          </div>
+        </span>
+        <br>
+        <span id="final-bueno" style="display:none;">
+          <div class="alert alert-success">
+            <strong>Bien!</strong>
+             Te quedan <span name="resto"> </span> BitCoins para gastar
+           </div>
+        </span>
+        <br>
+      </center>
+    </form>
+    </div>
+  </body>
+</html>
