@@ -11,7 +11,7 @@ function check_my_coins(){
 //  if(!ck_rut.test(id)){
 //    errors[errors.length] = "Formato de RUT incorrecto";
 //  }
-  if (id=""){// anotar ruts con bonus
+  if (id="Ignacio Fábrega"){// anotar ruts con bonus
     coins += 5;
   }
   document.getElementById("my-coins").innerHTML=coins;
@@ -102,26 +102,26 @@ function check_model(){
   m+= m02.options[m02.selectedIndex].value;
   var m03 = document.getElementById('m03');
   m+= m03.options[m03.selectedIndex].value;
-/*  var m04 = document.getElementById('m04');
-*  m+= m04.options[m04.selectedIndex].value;
-*  var m05 = document.getElementById('m05');
-*  m+= m05.options[m05.selectedIndex].value;
-*  var m06 = document.getElementById('m06');
-*  m+= m06.options[m06.selectedIndex].value;
-*  var m07 = document.getElementById('m07');
-*  m+= m07.options[m07.selectedIndex].value;
-*  var m08 = document.getElementById('m08');
-*  m+= m08.options[m08.selectedIndex].value;
-*  var m09 = document.getElementById('m09');
-*  m+= m09.options[m09.selectedIndex].value;
-*  var m10 = document.getElementById('m10');
-*  m+= m10.options[m10.selectedIndex].value;
-*  var m11 = document.getElementById('m11');
-*  m+= m11.options[m11.selectedIndex].value;
-*  var m12 = document.getElementById('m12');
-*  m+= m12.options[m12.selectedIndex].value;
-*  var m13 = document.getElementById('m13');
-*  m+= m13.options[m13.selectedIndex].value;*/
+  var m04 = document.getElementById('m04');
+  m+= m04.options[m04.selectedIndex].value;
+  var m05 = document.getElementById('m05');
+  m+= m05.options[m05.selectedIndex].value;
+  var m06 = document.getElementById('m06');
+  m+= m06.options[m06.selectedIndex].value;
+  var m07 = document.getElementById('m07');
+  m+= m07.options[m07.selectedIndex].value;
+  var m08 = document.getElementById('m08');
+  m+= m08.options[m08.selectedIndex].value;
+  var m09 = document.getElementById('m09');
+  m+= m09.options[m09.selectedIndex].value;
+  var m10 = document.getElementById('m10');
+  m+= m10.options[m10.selectedIndex].value;
+  var m11 = document.getElementById('m11');
+  m+= m11.options[m11.selectedIndex].value;
+  var m12 = document.getElementById('m12');
+  m+= m12.options[m12.selectedIndex].value;
+  var m13 = document.getElementById('m13');
+  m+= m13.options[m13.selectedIndex].value;
 
   if ((workshop = 3) && (m != 0)){
     document.getElementById('warning-model').style.display="block";
