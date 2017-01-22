@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Calculador de BitCoins</title>
+    <title>Calculador de Moneditas</title>
   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   	<meta name="description" content="documento de ejemplo" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="jumbotron">
-      <h1>Calculador de BitCoins</h1>
+      <h1>Calculador de Moneditas</h1>
       <p>Plataforma para calcular tu compra de compañero de equipo</p>
     </div>
 
@@ -17,7 +17,7 @@
       <div class="alert alert-info"><strong>Instrucciones</strong>
         <ol>
           <li>Seleccione su nombre</li>
-          <li>Obtenga sus <span class="glyphicon glyphicon-bitcoin" aria-hidden="true"></span> BitCoins</li>
+          <li>Obtenga sus <span class="glyphicon glyphicon-bitcoin" aria-hidden="true"></span> Moneditas</li>
           <li>Comience su compra</li>
           <li>Sólo puede comprar compañeros de talleres diferentes al suyo</li>
           <li>Use el botón de validación para corroborar si su compra cumple las reglas</li>
@@ -80,7 +80,7 @@
                 <!-- BOTON GENERICO -->
                 <button type="button" class="btn btn-primary" onClick="check_my_coins()">
                   <span class="glyphicon glyphicon-bitcoin"></span>
-                  Pedir BitCoins
+                  Pedir Moneditas
                 </button>
               </div>
               <div class="col-sm-4">
@@ -91,7 +91,7 @@
               </div>
             </div>
           </form>
-            <h2>Tus BitCoins son <span id="my-coins">0</span> <span class="glyphicon glyphicon-bitcoin"></span></h2>
+
 
         </div>
       </div><!-- Fin panel ingreso -->
@@ -104,15 +104,15 @@
           <span id="warning-dis" style="display:none;">
             <div class="alert alert-danger">
               <strong>Error!</strong>
-               No puedes comprar compañeros de tu mismo taller
+               No puedes comprar personas de tu mismo taller
              </div>
           </span>
           <div class="row">
             <div class="col-sm-4"><center>
               <img src="fotos/d/04Ignacio.jpg" class="img-rounded" width="120"/><br>
               Ignacio Matus de la Parra<br>
-              <select id="d01">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="d01">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -129,8 +129,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/06Maximiliano.jpg" class="img-rounded" width="120"/><br>
               Maximiliano San Martin<br>
-              <select id="d02">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="d02">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -147,8 +147,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/07Benjamin.jpg" class="img-rounded" width="120"/><br>
               Benjamin Correa<br>
-              <select id="d03">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="d03">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -167,8 +167,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/08Vicente.jpg" class="img-rounded" width="120"/><br>
               Vicente Herrera<br>
-              <select id="d04">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="d04">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -185,8 +185,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/20Bastian.jpg" class="img-rounded" width="120"/><br>
               Bastian Basalto<br>
-              <select id="d05">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="d05">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -203,8 +203,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/24Yari.jpg" class="img-rounded" width="120"/><br>
               Yaritsa Palomino<br>
-              <select id="d06">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="d06">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -223,8 +223,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/25Edice.jpg" class="img-rounded" width="120"/><br>
               Edicia Jara<br>
-              <select id="d07">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d07">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -241,8 +241,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/26Ariel.jpg" class="img-rounded" width="120"/><br>
               Ariel Moraga<br>
-              <select id="d08">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d08">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -259,8 +259,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/27Fernanda.jpg" class="img-rounded" width="120"/><br>
               Fernanda Rocha<br>
-              <select id="d09">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d09">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -279,8 +279,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/29Dominique.jpg" class="img-rounded" width="120"/><br>
               Dominique Le-Quesne<br>
-              <select id="d10">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d10">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -297,8 +297,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/32Andres.jpg" class="img-rounded" width="120"/><br>
               Andres Barrios<br>
-              <select id="d11">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d11">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -315,8 +315,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/33Krishna.jpg" class="img-rounded" width="120"/><br>
               Krishna Veliz<br>
-              <select id="d12">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d12">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -335,8 +335,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/34Sofia.jpg" class="img-rounded" width="120"/><br>
               Sofia Parra<br>
-              <select id="d13">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d13">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -353,8 +353,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/35Victor.jpg" class="img-rounded" width="120"/><br>
               Victor Bravo<br>
-              <select id="d14">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d14">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -371,8 +371,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/d/36Manuel.jpg" class="img-rounded" width="120"/><br>
               Manuel Bravo<br>
-              <select id="d15">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="d15">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -397,15 +397,15 @@
           <span id="warning-model" style="display:none;">
             <div class="alert alert-danger">
               <strong>Error!</strong>
-               No puedes comprar compañeros de tu mismo taller
+               No puedes comprar personas de tu mismo taller
              </div>
           </span>
           <div class="row">
             <div class="col-sm-4"><center>
               <img src="fotos/m/01Pablo.jpg" class="img-rounded" width="120"/><br>
               Pablo Correa<br>
-              <select id="m01">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="m01">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -422,8 +422,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/10Christina.jpg" class="img-rounded" width="120"/><br>
               Cristina Pokrant<br>
-              <select id="m02">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="m02">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -440,8 +440,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/11Sofia.jpg" class="img-rounded" width="120"/><br>
               Sofia Sepúlveda<br>
-              <select id="m03">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="m03">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -460,8 +460,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/12Elicer.jpg" class="img-rounded" width="120"/><br>
               Eliecer Rojas<br>
-              <select id="m04">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="m04">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -478,8 +478,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/13Camila.jpg" class="img-rounded" width="120"/><br>
               Camila Sotomayor<br>
-              <select id="m05">
-                <option value="0">0</option>
+              <select onchange="check_sale()" onchange="myFunction()" id="m05">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -496,8 +496,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/14Stephania.jpg" class="img-rounded" width="120"/><br>
               Stephanie Sáez<br>
-              <select id="m06">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m06">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -516,8 +516,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/15Hernan.jpg" class="img-rounded" width="120"/><br>
               Hernán Cisterna<br>
-              <select id="m07">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m07">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -534,8 +534,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/16Fernanda.jpg" class="img-rounded" width="120"/><br>
               Fernanda Jimenez<br>
-              <select id="m08">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m08">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -552,8 +552,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/17Cesar.jpg" class="img-rounded" width="120"/><br>
               César Muñoz<br>
-              <select id="m09">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m09">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -572,8 +572,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/18Matias.jpg" class="img-rounded" width="120"/><br>
               Matias Muñoz<br>
-              <select id="m10">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m10">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -590,8 +590,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/21Ignacio.jpg" class="img-rounded" width="120"/><br>
               Ignacio Fábrega<br>
-              <select id="m11">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m11">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -608,8 +608,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/m/22Alfonso.jpg" class="img-rounded" width="120"/><br>
               Alfonso Flores<br>
-              <select id="m12">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m12">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -628,8 +628,8 @@
             <div class="col-sm-6"><center>
               <img src="fotos/m/37Pablo.jpg" class="img-rounded" width="120"/><br>
               Pablo Morales<br>
-              <select id="m13">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m13">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -646,8 +646,8 @@
             <div class="col-sm-6"><center>
               <img src="fotos/m/38Camilo.jpg" class="img-rounded" width="120"/><br>
               Camilo Paredes<br>
-              <select id="m14">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="m14">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -673,15 +673,15 @@
           <span id="warning-comp" style="display:none;">
             <div class="alert alert-danger">
               <strong>Error!</strong>
-               No puedes comprar compañeros de tu mismo taller
+               No puedes comprar personas de tu mismo taller
              </div>
           </span>
           <div class="row">
             <div class="col-sm-4"><center>
               <img src="fotos/c/02Thaiz.jpg" class="img-rounded" width="120"/><br>
               Thaiz Pino<br>
-              <select id="c01">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c01">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -698,8 +698,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/03Andrea.jpg" class="img-rounded" width="120"/><br>
               Andrea Arredondo<br>
-              <select id="c02">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c02">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -716,8 +716,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/05Tomas.jpg" class="img-rounded" width="120"/><br>
               Tomas Herrera<br>
-              <select id="c03">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c03">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -736,8 +736,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/09Mauricio.jpg" class="img-rounded" width="120"/><br>
               Mauricio Mercado<br>
-              <select id="c04">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c04">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -754,8 +754,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/19Ignacio.jpg" class="img-rounded" width="120"/><br>
               Ignacio Candia<br>
-              <select id="c05">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c05">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -772,8 +772,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/23Felipe.jpg" class="img-rounded" width="120"/><br>
               Felipe Sanchez<br>
-              <select id="c06">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c06">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -792,8 +792,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/28Daniela.jpg" class="img-rounded" width="120"/><br>
               Daniela Lebtun<br>
-              <select id="c07">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c07">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -810,8 +810,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/30Catalina.jpg" class="img-rounded" width="120"/><br>
               Catalina Arteaga<br>
-              <select id="c08">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c08">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -828,8 +828,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/31Alonso.jpg" class="img-rounded" width="120"/><br>
               Alonso Venegas<br>
-              <select id="c09">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c09">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -848,8 +848,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/39Vicente.jpg" class="img-rounded" width="120"/><br>
               Vicente Sule<br>
-              <select id="c10">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c10">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -866,8 +866,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/40Octavio.jpg" class="img-rounded" width="120"/><br>
               Octavio Cid<br>
-              <select id="c11">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c11">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -884,8 +884,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/41Elias.jpg" class="img-rounded" width="120"/><br>
               Elias Sabja<br>
-              <select id="c12">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c12">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -905,8 +905,8 @@
             <div class="col-sm-4"><center>
               <img src="fotos/c/42Elena.jpg" class="img-rounded" width="120"/><br>
               Elena Acosta<br>
-              <select id="c13">
-                <option value="0">0</option>
+              <select onchange="check_sale()" id="c13">
+                <option value="0" selected>0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -923,37 +923,46 @@
             <div class="col-sm-4"></div>
           </div>
         </div>
-
+<br><br><br><br>
       </div><!-- Fin panel taller de computación -->
+      <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="row">
+          <div class="col-sm-8"><center>
+            <h4>
+              Tus Moneditas son <span id="my-coins">0</span> <span class="glyphicon glyphicon-bitcoin"></span>
+            </h4>
+          </center></div>
+          <div class="col-sm-4">
+            
+            <!-- BOTON GENERICO -->
+            <button type="button" class="btn btn-primary" onClick="check_sale()">
+              <span class="glyphicon glyphicon-bitcoin"></span>
+              Chequear cotización
+            </button>
 
-      <center>
-        <!-- BOTON GENERICO -->
-        <button type="button" class="btn btn-primary" onClick="check_sale()">
-          <span class="glyphicon glyphicon-bitcoin"></span>
-          Chequear cotización
-        </button>
-
-        <!-- BOTON RESET -->
-        <button type="reset" class="btn btn-info" onclick="clean()">
-          <span class="glyphicon glyphicon-erase"></span>
-          Todo de nuevo
-        </button>
-        <br>
-        <span id="final-error" style="display:none;">
-          <div class="alert alert-danger">
-            <strong>Error!</strong>
-            Haz gastado BitCoins de más
+            <!-- BOTON RESET -->
+            <button type="reset" class="btn btn-info" onclick="clean()">
+              <span class="glyphicon glyphicon-erase"></span>
+            </button>
           </div>
-        </span>
-        <br>
-        <span id="final-bueno" style="display:none;">
-          <div class="alert alert-success">
-            <strong>Bien!</strong>
-             Te quedan <span id="resto-bueno"> </span> BitCoins para gastar
-           </div>
-        </span>
-        <br>
-      </center>
+        </div>
+          <center>
+            <span id="final-error" style="display:none;">
+              <div class="alert alert-danger">
+                <strong>Error!</strong>
+                Haz gastado Moneditas de más
+              </div>
+            </span>
+            <br>
+            <span id="final-bueno" style="display:none;">
+              <div class="alert alert-success">
+                <strong>Bien!</strong>
+                 Te quedan <span id="resto-bueno"> </span> Moneditas para gastar
+               </div>
+            </span>
+          </center>
+        </div>
+      </div>
     </form>
     </div>
   </body>
