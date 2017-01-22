@@ -16,8 +16,7 @@
     <div class="container">
       <div class="alert alert-info"><strong>Instrucciones</strong>
         <ol>
-          <li>Ingrese su RUT</li>
-          <li>Seleccione el taller que tomó</li>
+          <li>Seleccione su nombre</li>
           <li>Obtenga sus <span class="glyphicon glyphicon-bitcoin" aria-hidden="true"></span> BitCoins</li>
           <li>Comience su compra</li>
           <li>Sólo puede comprar compañeros de talleres diferentes al suyo</li>
@@ -31,15 +30,50 @@
           <form name="ingreso">
             <div class="row">
               <div class="col-sm-4">
-                Nombre<input type="text" id="rut" />
-                <h6><i>Copie su nombre de la siguiente lista y péguelo en este campo</i></h6>
-              </div>
-              <div class="col-sm-4">
-                Taller
-                <select id="workshop">
-                  <option value="1">Computación</option>
-                  <option value="2">Diseño</option>
-                  <option value="3">Modelamiento Digital</option>
+                <select id="persona">
+                  <option value="0">¿Cual es tu nombre?</option>
+                  <option value="101">Ignacio Matus de la Parra</option>
+                  <option value="102">Maximiliano San Martin</option>
+                  <option value="103">Benjamin Correa</option>
+                  <option value="104">Vicente Herrera</option>
+                  <option value="105">Bastian Basalto</option>
+                  <option value="106">Yaritsa Palomino</option>
+                  <option value="107">Edicia Jara</option>
+                  <option value="108">Ariel Moraga</option>
+                  <option value="109">Fernanda Rocha</option>
+                  <option value="110">Dominique Le-Quesne</option>
+                  <option value="111">Andres Barrios</option>
+                  <option value="112">Krishna Veliz</option>
+                  <option value="113">Sofia Parra</option>
+                  <option value="114">Victor Bravo</option>
+                  <option value="115">Manuel Bravo</option>
+                  <option value="201">Pablo Correa</option>
+                  <option value="202">Cristina Pokrant</option>
+                  <option value="203">Sofia Sepúlveda</option>
+                  <option value="204">Eliecer Rojas</option>
+                  <option value="205">Camila Sotomayor</option>
+                  <option value="208">Stephanie Sáez</option>
+                  <option value="209">Hernán Cisterna</option>
+                  <option value="210">Hernán Cisterna</option>
+                  <option value="211">César Muñoz</option>
+                  <option value="212">Matias Muñoz</option>
+                  <option value="213">Ignacio Fábrega</option>
+                  <option value="214">Alfonso Flores</option>
+                  <option value="215">Pablo Morales</option>
+                  <option value="216">Camilo Paredes</option>
+                  <option value="301">Thaiz Pino</option>
+                  <option value="302">Andrea Arredondo</option>
+                  <option value="303">Tomas Herrera</option>
+                  <option value="304">Mauricio Mercado</option>
+                  <option value="305">Ignacio Candia</option>
+                  <option value="306">Felipe Sanchez</option>
+                  <option value="307">Daniela Lebtun</option>
+                  <option value="308">Catalina Arteaga</option>
+                  <option value="309">Alonso Venegas</option>
+                  <option value="310">Vicente Sule</option>
+                  <option value="311">Octavio Cid</option>
+                  <option value="312">Elias Sabja</option>
+                  <option value="313">Elena Acosta</option>
                 </select>
               </div>
               <div class="col-sm-4">
@@ -47,7 +81,10 @@
                 <button type="button" class="btn btn-primary" onClick="check_my_coins()">
                   <span class="glyphicon glyphicon-bitcoin"></span>
                   Pedir BitCoins
-                </button>   <button type="reset" class="btn btn-default">
+                </button>
+              </div>
+              <div class="col-sm-4">
+                <button type="reset" class="btn btn-default">
                   <span class="glyphicon glyphicon-erase"></span>
                   Todo de nuevo
                 </button>
@@ -64,6 +101,12 @@
       <div class="panel panel-default">
         <div class="panel-heading">Taller de Diseño</div>
         <div class="panel-body">
+          <span id="warning-dis" style="display:none;">
+            <div class="alert alert-danger">
+              <strong>Error!</strong>
+               No puedes comprar compañeros de tu mismo taller
+             </div>
+          </span>
           <div class="row">
             <div class="col-sm-4"><center>
               <img src="fotos/d/04Ignacio.jpg" class="img-rounded" width="120"/><br>
@@ -345,17 +388,18 @@
             </center></div>
           </div>
         </div>
-        <span id="warning-dis" style="display:none;">
-          <div class="alert alert-danger">
-            <strong>Error!</strong>
-             No puedes comprar compañeros de tu mismo taller
-           </div>
-        </span>
+
       </div><!-- Fin panel Taller de diseño -->
 
       <div class="panel panel-default">
         <div class="panel-heading">Taller de Modelamiento Digital</div>
         <div class="panel-body">
+          <span id="warning-model" style="display:none;">
+            <div class="alert alert-danger">
+              <strong>Error!</strong>
+               No puedes comprar compañeros de tu mismo taller
+             </div>
+          </span>
           <div class="row">
             <div class="col-sm-4"><center>
               <img src="fotos/m/01Pablo.jpg" class="img-rounded" width="120"/><br>
@@ -619,18 +663,19 @@
             </center></div>
 
         </div>
-        <span id="warning-model" style="display:none;">
-          <div class="alert alert-danger">
-            <strong>Error!</strong>
-             No puedes comprar compañeros de tu mismo taller
-           </div>
-        </span>
+
       </div>
       </div><!-- Fin panel Taller modelamiento -->
 
       <div class="panel panel-default">
         <div class="panel-heading">Taller de Comptación</div>
         <div class="panel-body">
+          <span id="warning-comp" style="display:none;">
+            <div class="alert alert-danger">
+              <strong>Error!</strong>
+               No puedes comprar compañeros de tu mismo taller
+             </div>
+          </span>
           <div class="row">
             <div class="col-sm-4"><center>
               <img src="fotos/c/02Thaiz.jpg" class="img-rounded" width="120"/><br>
@@ -878,12 +923,7 @@
             <div class="col-sm-4"></div>
           </div>
         </div>
-        <span id="warning-comp" style="display:none;">
-          <div class="alert alert-danger">
-            <strong>Error!</strong>
-             No puedes comprar compañeros de tu mismo taller
-           </div>
-        </span>
+
       </div><!-- Fin panel taller de computación -->
 
       <center>
@@ -902,7 +942,7 @@
         <span id="final-error" style="display:none;">
           <div class="alert alert-danger">
             <strong>Error!</strong>
-            Haz gastado <span id="resto-error"> </span> BitCoins de más
+            Haz gastado BitCoins de más
           </div>
         </span>
         <br>
