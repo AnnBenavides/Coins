@@ -46,10 +46,10 @@ function check_comp(){
   c = c +  parseInt(c13.options[c13.selectedIndex].value);
 
 
-  if (((cod>=300)) && (c != 0)){
-    document.getElementById('warning-comp').style.display="block";
-    return 0;
-  }
+  //if (((cod>=300)) && (c != 0)){
+    //document.getElementById('warning-comp').style.display="block";
+    //return 0;
+  //}
 
   return c;
 }
@@ -88,10 +88,10 @@ function check_dis(){
   var d15 = document.getElementById('d15');
   d = d +  parseInt(d15.options[d15.selectedIndex].value);
 
-  if ((cod>=100 && cod<=200) && (d != 0)){
-    document.getElementById('warning-dis').style.display="block";
-    return 0;
-  }
+//  if ((cod>=100 && cod<=200) && (d != 0)){
+  //  document.getElementById('warning-dis').style.display="block";
+  //  return 0;
+  //}
 
   return d;
 }
@@ -126,10 +126,10 @@ function check_model(){
   var m13 = document.getElementById('m13');
   m = m +  parseInt(m13.options[m13.selectedIndex].value);
 
-  if ((cod>=200 && cod<=300) && (m != 0)){
-    document.getElementById('warning-model').style.display="block";
-    return 0;
-  }
+//  if ((cod>=200 && cod<=300) && (m != 0)){
+  //  document.getElementById('warning-model').style.display="block";
+    //return 0;
+//  }
 
   return m;
 }
