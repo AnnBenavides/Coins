@@ -123,8 +123,14 @@ function check_model(){
   m = m +  parseInt(m10.options[m10.selectedIndex].value);
   var m11 = document.getElementById('m11');
   m = m +  parseInt(m11.options[m11.selectedIndex].value);
+  var m12 = document.getElementById('m12');
+  m = m +  parseInt(m12.options[m12.selectedIndex].value);
+  var m14 = document.getElementById('m14');
+  m = m +  parseInt(m11.options[m11.selectedIndex].value);
   var m13 = document.getElementById('m13');
   m = m +  parseInt(m13.options[m13.selectedIndex].value);
+  var m15 = document.getElementById('m15');
+  m = m +  parseInt(m15.options[m15.selectedIndex].value);
 
   if ((cod>=200 && cod<=300) && (m != 0)){
     document.getElementById('warning-model').style.display="block";
