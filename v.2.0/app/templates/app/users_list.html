@@ -1,27 +1,31 @@
-<html>
-        <head>
-            <title>System Coins</title>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-			<meta charset="utf-8">
-        </head>
-        <body>
-            <div class="container-fluid">
-            	<div>
-	                <h1><a href="">Coins</a></h1>
-	            </div>
-
-	            <div class="row">
-				 	{% for profesor in profesores %}
-				  		<div class="col">
-				  			<div> foto </div>
-				  			<div>
-				  				<p><a href=""> {{ profesor}} </a></p>
-				  				<p> taller </p>
-				  			</div>
-				  		</div>
-				  	{% endfor %}
-				</div>
-            </div>
-        </body>
-    </html>
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="panel panel-default">
+	<div class="panel-heading"><h2> Profesores </h2></div>
+	<div class="panel-body">
+		<div class="row">
+		 	{% for profesor in profesores %}
+		  		<div class="col-sm-4">
+		  			<div> foto </div>
+		  			<div>
+		  				<p><b><a href="{% url 'perfil_profe' pk=profesor.pk %}"> {{ profesor }} </a></b></p>
+		  				<p><i> taller </i></p>
+		  			</div>
+		  		</div>
+		  	{% endfor %}
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading"><h2> Diseño </h2></div>
+	<div class="panel-body"></div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading"><h2> Modelamiento </h2></div>
+	<div class="panel-body"></div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading"><h2> Computación </h2></div>
+	<div class="panel-body"></div>
+</div>
+{% endblock %}
