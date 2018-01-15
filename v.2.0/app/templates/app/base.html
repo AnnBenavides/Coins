@@ -10,7 +10,7 @@
         <body>
             <div class="content container">
             	<div class="row well well-sm">
-	                <div class="col-sm-4"><h1><a href="">Coins</a></h1></div>
+	                <div class="col-sm-4"><h1><a href="{% url 'inicio' %}">Coins</a></h1></div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
                         {% if user.is_authenticated %}
