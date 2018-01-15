@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Alumno, Taller, Grupo, Profesor
 
+
 # Create your views here.
+
 
 def users_list(request):
 	profesores = Profesor.objects.all()

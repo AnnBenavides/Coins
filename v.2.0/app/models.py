@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Profesor(models.Model):
 	user = models.ForeignKey('auth.User')
@@ -22,7 +23,7 @@ class Alumno(models.Model):
 	user = models.ForeignKey('auth.User')
 	saldo = models.IntegerField(default=20)
 	gastado = models.IntegerField(default=0)
-	taller = models.ForeignKey(Taller)
+	taller = models.ForeignKey(Taller, blank=True)
 
 	def __str__(self):
 		return self.user.get_username()
