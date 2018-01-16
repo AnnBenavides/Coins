@@ -1,0 +1,13 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="panel panel-default">
+	<div class="panel-heading"><h2> Agregar Bien </h2></div>
+	<div class="panel-body">
+		<form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Agregar</button>
+        </form>
+	</div>
+</div>
+{% endblock %}

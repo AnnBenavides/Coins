@@ -23,10 +23,26 @@
 				<div>
 					<p><b><p><b><a href="{% url 'perfil_alumno' pk=alumno.pk %}"> {{ alumno }} </a></b></p></b></p>
 			  		<p><i> Grupo {{ alumno.grupo }}</i></p><br>
-			  		<button type="button" class="btn btn-info"><a href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span>2</button>
+			  		<button type="button" class="btn btn-info"><a href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span>2</a></button>
 				</div>
 			</div>
 			{% endfor %}
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading"><h2> Herramientas y Materiales </h2></div>
+	<div class="panel-body">
+		<div class="row">
+		 	{% for bien in bienes %}
+		  		<div class="col-sm-4">
+		  			<div>
+		  				<p><b>{{ bien.nombre}}</b></p><br>
+			  		<button type="button" class="btn btn-info"><a href="{% url 'bien' coins=bien.valor %}">Comprar por <span class="glyphicon glyphicon-copyright-mark"></span>{{bien.valor}}</a></button>
+		  			</div>
+		  		</div>
+		  	{% endfor %}
+		</div>
 	</div>
 </div>
 

@@ -102,7 +102,7 @@ class Bien(models.Model):
 	valor = models.IntegerField(default=1)
 
 	def __str__(self):
-		return self.nombre+": "+self.valor
+		return self.nombre+": "+str(self.valor)
 
 class Historial(models.Model):
 	user = models.ForeignKey(User)

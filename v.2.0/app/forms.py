@@ -1,3 +1,8 @@
 from django import forms
+from .models import Bien
 
-from .models import Alumno, Grupo, Profesor, Bloque, Bien
+class BienForm(forms.ModelForm):
+
+	class Meta:
+		model = Bien
+		fields = ('nombre','valor',)
