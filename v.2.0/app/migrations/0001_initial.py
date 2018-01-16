@@ -15,44 +15,69 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Alumno',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
-                ('saldo', models.IntegerField(default=20)),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('name', models.CharField(max_length=60)),
+                ('coins', models.IntegerField(default=0)),
                 ('gastado', models.IntegerField(default=0)),
+                ('grupo', models.IntegerField(null=True, blank=True)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Bien',
+            fields=[
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('nombre', models.CharField(max_length=50)),
+                ('valor', models.IntegerField(default=1)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Bloque',
+            fields=[
+                ('idBloque', models.AutoField(primary_key=True, serialize=False)),
+                ('dia', models.CharField(choices=[('21', 'Lunes'), ('22', 'Martes'), ('23', 'Miercoles'), ('24', 'Jueves'), ('25', 'Viernes')], max_length=2, default='22')),
+                ('horas', models.CharField(choices=[('01', '14:00 - 14:15'), ('02', '14:15 - 14:30'), ('03', '14:30 - 14:45'), ('04', '14:45 - 15:00'), ('05', '15:00 - 15:15'), ('06', '15:15 - 15:30'), ('07', '15:30 - 15:45'), ('08', '15:45 - 16:00'), ('09', '16:00 - 16:15'), ('10', '16:15 - 16:30'), ('11', '16:30 - 16:45'), ('12', '16:45 - 17:00'), ('13', '17:00 - 17:15'), ('14', '17:15 - 17:30'), ('15', '17:30 - 17:45'), ('16', '17:45 - 18:00')], max_length=2, default='01')),
+                ('valor', models.IntegerField(default=1)),
+                ('estado', models.CharField(choices=[('0', 'Ausente'), ('1', 'Presente'), ('2', 'Comprado')], max_length=1, default='0')),
             ],
         ),
         migrations.CreateModel(
             name='Grupo',
             fields=[
-                ('nroGrupo', models.AutoField(primary_key=True, serialize=False)),
-                ('computacion', models.ForeignKey(related_name='computacion', to='app.Alumno')),
-                ('diseno', models.ForeignKey(related_name='diseno', to='app.Alumno')),
-                ('modelamiento', models.ForeignKey(related_name='modelamiento', to='app.Alumno')),
+                ('nroGrupo', models.IntegerField(primary_key=True, serialize=False)),
+                ('usr1', models.ForeignKey(to='app.Alumno', related_name='1+')),
+                ('usr2', models.ForeignKey(to='app.Alumno', related_name='2+')),
+                ('usr3', models.ForeignKey(to='app.Alumno', related_name='3+')),
+                ('usr4', models.ForeignKey(to='app.Alumno', related_name='4+')),
+                ('usr5', models.ForeignKey(null=True, related_name='5+', to='app.Alumno', blank=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Historial',
+            fields=[
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('asunto', models.TextField()),
+                ('valor', models.IntegerField()),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
             name='Profesor',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
-                ('coins_acumuladas', models.IntegerField()),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('name', models.CharField(max_length=60)),
+                ('coins', models.IntegerField(default=0)),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
         ),
-        migrations.CreateModel(
-            name='Taller',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
-                ('nombre', models.CharField(max_length=25)),
-                ('profesor', models.ForeignKey(to='app.Profesor')),
-            ],
+        migrations.AddField(
+            model_name='bloque',
+            name='grupo',
+            field=models.ForeignKey(null=True, to='app.Grupo', blank=True),
         ),
         migrations.AddField(
-            model_name='alumno',
-            name='taller',
-            field=models.ForeignKey(to='app.Taller'),
-        ),
-        migrations.AddField(
-            model_name='alumno',
-            name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
+            model_name='bloque',
+            name='profe',
+            field=models.ForeignKey(to='app.Profesor'),
         ),
     ]

@@ -7,8 +7,7 @@
 		 	{% for profesor in profesores %}
 		  		<div class="col-sm-4">
 		  			<div>
-		  				<p><b><a href="{% url 'perfil_profe' pk=profesor.pk %}"> {{ profesor }} </a></b></p>
-		  				<p><i> taller </i></p>
+		  				<p><b><a href="{% url 'perfil_profe' pk=profesor.pk %}" class="btn btn-default"> {{ profesor }} </a></b></p>
 		  			</div>
 		  		</div>
 		  	{% endfor %}
@@ -20,15 +19,16 @@
 		<div class="panel-heading"><h2> Alumnos </h2></div>
 		<div class="panel-body">
 			{% for alumno in alumnos %}
-			<a href="{% url 'perfil_alumno' pk=alumno.pk %}" class="btn btn-default">
+			<div class="btn btn-default">
 				<div>
-					<p><b>{{ alumno }} </b></p>
-			  		<p><i> Grupo {{ alumno.grupo }}</i></p>
+					<p><b><p><b><a href="{% url 'perfil_alumno' pk=alumno.pk %}"> {{ alumno }} </a></b></p></b></p>
+			  		<p><i> Grupo {{ alumno.grupo }}</i></p><br>
+			  		<button type="button" class="btn btn-info"><a href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span>2</button>
 				</div>
-			</a>
+			</div>
 			{% endfor %}
 	</div>
-	</div>
+</div>
 
 </div>
 {% endblock %}
