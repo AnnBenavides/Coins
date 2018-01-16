@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Alumno, Taller, Grupo, Profesor
+from .models import Alumno, Grupo, Profesor
 
 
 # Create your views here.
 
 
 def users_list(request):
-	profesores = Profesor.objects.all()
-	alumnos = Alumno.objects.all().order_by('taller')
+	profesores = Profesor.objects.all().order_By('nombre')
+	alumnos = Alumno.objects.all().order_by('nombre')
 
 	return render(request, 'app/users_list.html', {'profesores' : profesores, 'alumnos' : alumnos})
 

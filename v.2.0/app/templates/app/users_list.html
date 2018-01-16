@@ -6,7 +6,6 @@
 		<div class="row">
 		 	{% for profesor in profesores %}
 		  		<div class="col-sm-4">
-		  			<div> foto </div>
 		  			<div>
 		  				<p><b><a href="{% url 'perfil_profe' pk=profesor.pk %}"> {{ profesor }} </a></b></p>
 		  				<p><i> taller </i></p>
@@ -23,9 +22,8 @@
 			{% for alumno in alumnos %}
 			<a href="{% url 'perfil_alumno' pk=alumno.pk %}" class="btn btn-default">
 				<div>
-					<img src="" alt="foto">
 					<p><b>{{ alumno }} </b></p>
-			  		<p><i> Taller de {{ alumno.taller }}</i></p>
+			  		<p><i> Grupo {{ alumno.grupo }}</i></p>
 				</div>
 			</a>
 			{% endfor %}

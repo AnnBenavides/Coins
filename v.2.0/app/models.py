@@ -4,35 +4,29 @@ from django.db import models
 # Create your models here.
 class Profesor(models.Model):
 	user = models.ForeignKey('auth.User')
+	nombre = user.get_full_name()
 	coins_acumuladas = models.IntegerField()
 	
-	def __str__(self):
-		return self.user.get_username()
-
-class Taller(models.Model):
-	nombre = models.CharField(max_length=25)
-	profesor = models.ForeignKey(Profesor)
-
-	def getTaller(self):
-		return self.nombre
-
 	def __str__(self):
 		return self.nombre
 
 class Alumno(models.Model):
 	user = models.ForeignKey('auth.User')
+	nombre = user.get_full_name()
 	saldo = models.IntegerField(default=20)
 	gastado = models.IntegerField(default=0)
-	taller = models.ForeignKey(Taller, blank=True)
+	grupo = models.IntegerField(blank=True, null=True)
 
 	def __str__(self):
-		return self.user.get_username()
+		return self.nombre
 
 class Grupo(models.Model):
-	nroGrupo = models.AutoField(primary_key=True)
-	diseno = models.ForeignKey(Alumno, related_name='diseno')
-	modelamiento = models.ForeignKey(Alumno, related_name='modelamiento')
-	computacion = models.ForeignKey(Alumno, related_name='computacion')
+	nroGrupo = models.IntegerField(primary_key=True)
+	usr1 = models.ForeignKey(Alumno)
+	usr2 = models.ForeignKey(Alumno)
+	usr3 = models.ForeignKey(Alumno)
+	usr4 = models.ForeignKey(Alumno)
+	usr5 = models.ForeignKey(Alumno,blank=True, null=True)
 
 	def __str__(self):
 		return str(self.nroGrupo)

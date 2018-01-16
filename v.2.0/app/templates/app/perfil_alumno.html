@@ -5,15 +5,13 @@
 	<div class="panel-heading"><h2> {{ alumno }} </h2></div>
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-sm-6"> foto </div>
+			<div class="col-sm-6"> <span class="glyphicon glyphicon-info-sign"></span> </div>
 			<div class="col-sm-6"> 
 				{{ alumno }}
 				<br>
-				<i>Taller de {{ alumno.taller }}</i>
+				<i> - Grupo {{ alumno.grupo }} - </i>
 				<br>
-				<i> - Grupo - </i>
-				<br>
-				<button type="button" class="btn btn-info"><a href="">Comprar ayuda (5 coins)</a></button>
+				<button type="button" class="btn btn-info"><a href="">Comprar ayuda <span class="glyphicon glyphicon-copyright-mark"></span>5</a></button>
 			</div>
 		</div>
 	</div>
