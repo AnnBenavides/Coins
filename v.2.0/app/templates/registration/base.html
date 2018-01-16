@@ -8,13 +8,12 @@
         </head>
         </head>
         <body>
+            <div class="row well well-sm">
+                <div class="col-sm-4"><h1><a href="{% url 'login' %}><span class="glyphicon glyphicon-copyright-mark"></span> Coins</a></h1></div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4"></div>
+            </div>
             <div class="content container">
-            	<div class="row well well-sm">
-	                <div class="col-sm-4"><h1><a href="">Coins</a></h1></div>
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4">
-                    </div>
-	            </div>
 	            {% block content %}
                 {% endblock %}
             </div>
