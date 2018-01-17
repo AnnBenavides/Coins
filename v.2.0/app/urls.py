@@ -8,4 +8,6 @@ urlpatterns = [
         url(r'^alumno/(?P<pk>[0-9]+)/ayuda/$', views.ayuda, name='ayuda'),
         url(r'^bien/(?P<pk>[0-9]+)$', views.bien, name='bien'),
         url(r'^bien/nuevo/$', views.nuevo_bien, name='nuevo_bien'),
+        url(r'^horario/nuevo/$', views.nuevo_bloque, name='nuevo_bloque'),
+        url(r'^horario/(?P<pk>[0-9]+)$', views.editar_bloque, name='editar_bloque'),
     ]

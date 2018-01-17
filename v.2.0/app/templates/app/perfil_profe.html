@@ -16,7 +16,7 @@
 </div>
 
 <div class="panel panel-default">
-	<div class="panel-heading"><h2> Horario </h2></div>
+	<div class="panel-heading"><h2> <a href="{% url 'nuevo_bloque' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> | Horario </h2></div>
 	<div class="panel-body">
 		<table class="table table-hover">
 			<thead>
@@ -25,12 +25,53 @@
 				</tr>
 			</thead>
 			<tbody>
+				{{% for bloque in bloques %}}
 				<tr>
-					<td>08:00 - 08:15<td>
+					<td>14:00 - 14:15</td>
+					{{% if bloque.horas == 01 %}}
+						{{% if bloque.estado == 1 %}}
+						<td><a href="{% url 'comprar_bloque' pk=bloque.pk %}"><button class="btn btn-warning">
+							<span class="glyphicon glyphicon-plus"></span> Comprar por {{bloque.valor}} </button>
+							<h6><a href="{% url 'editar_bloque' pk=bloque.pk %}">Editar</a></h6>
+						</a></td>
+						{{% elif bloque.estado == 2 %}}
+						<td><button class="btn btn-danger"> Comprado por {{bloque.grupo}}</button></td>
+						{{% elif bloque.estado == 0 %}}
+						<td><button class="btn"> No disponible <h6><a href="{% url 'editar_bloque' pk=bloque.pk %}">Editar</a></h6></button></td>
+						{{% endif %}}
+					{{% endif %}}
 				</tr>
 				<tr>
-					<td>08:15 - 08:30<td>
+					<td>14:15 - 14:30</td>
+					{{% if bloque.horas == 02%}}
+						{{% if bloque.estado == 1 %}}
+						<td><a href="{% url 'comprar_bloque' pk=bloque.pk %}"><button class="btn btn-warning">
+							<span class="glyphicon glyphicon-plus"></span> Comprar por {{bloque.valor}} </button>
+							<h6><a href="{% url 'editar_bloque' pk=bloque.pk %}">Editar</a></h6>
+						</a></td>
+						{{% elif bloque.estado == 2 %}}
+						<td><button class="btn btn-danger"> Comprado por {{bloque.grupo}}</button></td>
+						{{% elif bloque.estado == 0 %}}
+						<td><button class="btn"> No disponible <h6><a href="{% url 'editar_bloque' pk=bloque.pk %}">Editar</a></h6></button></td>
+						{{% endif %}}
+					{{% endif %}}
 				</tr>
+				<tr>
+					<td>14:30 - 14:45</td>
+					{{% if bloque.horas == 03 %}}
+						{{% if bloque.estado == 1 %}}
+						<td><a href="{% url 'comprar_bloque' pk=bloque.pk %}"><button class="btn btn-warning">
+							<span class="glyphicon glyphicon-plus"></span> Comprar por {{bloque.valor}} </button>
+							<h6><a href="{% url 'editar_bloque' pk=bloque.pk %}">Editar</a></h6>
+						</a></td>
+						{{% elif bloque.estado == 2 %}}
+						<td><button class="btn btn-danger"> Comprado por {{bloque.grupo}}</button></td>
+						{{% elif bloque.estado == 0 %}}
+						<td><button class="btn"> No disponible <h6><a href="{% url 'editar_bloque' pk=bloque.pk %}">Editar</a></h6></button></td>
+						{{% endif %}}
+					{{% endif %}}
+				</tr>
+				{{% endfor %}}
 			</tbody>
 
 		</table>
