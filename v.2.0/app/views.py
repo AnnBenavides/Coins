@@ -4,7 +4,11 @@ from .forms import BienForm
 
 
 # Create your views here.
+def getAlumno(usuario):
+	return Alumno.objects.get(user=usuario)
 
+def getProfesor(usuario):
+	return Profesor.objects.get(user=usuario)
 
 def users_list(request):
 	profesores = Profesor.objects.all()
@@ -32,7 +36,7 @@ def perfil_alumno(request,pk):
 		return redirect('login.html')
 	
 def ayuda(request,pk):
-	user = request.user
+	user = getProfesor(request.user)
 	if (user.is_authenticated):
 		alumno = get_object_or_404(Alumno, pk=pk)
 		alumno.cargar(2)
@@ -59,36 +63,28 @@ def cargar(request):
         'form': form,
     })
 
-def getAlumno(usuario):
-	return Alumno.objects.get(user=usuario)
 
-def getProfesor(usuario):
-	return Profesor.objects.get(user=usuario)
 
-def bien(request,coins):
-	user = request.user
+def bien(request,pk):
+	bien = get_object_or_404(Bien, pk=pk)
 	if (user.is_authenticated):
 		alumno = getAlumno(request.user)
-		alumno.cargar(coins)
+		alumno.cargar(bien.valor)
 		nombre = "Compra de bien "+str(alumno)
-		h = Historial.objects.create(user=user, asunto=nombre, valor=coins)
+		h = Historial.objects.create(user=request.user, asunto=nombre, valor=bien.valor)
 		return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
 	else:
 		return redirect('login.html')
 
 def nuevo_bien(request):
 	if request.method == "POST":
-		form = PostForm(request.POST)
+		form = BienForm(request.POST)
 		if form.is_valid():
 			post = form.save(commit=False)
 			profe = getProfesor(request.user)
-			h = Historial.objects.create(user=profe, asunto='Crear bien', valor='0')
+			h = Historial.objects.create(user=request.user, asunto='Crear bien', valor='0')
 			post.save()
 			return render(request, 'app/perfil_profe.html', {'profe' : profe})
 	else:
-		profesores = Profesor.objects.all()
-		alumnos = Alumno.objects.all().order_by('grupo')
-		bienes = Bien.objects.all()
-		user = request.user
-		if (user.is_authenticated):
-			return render(request, 'app/users_list.html', {'profesores' : profesores, 'alumnos' : alumnos, 'bienes' : bienes})
+		form = BienForm()
+		return render(request,'app/nuevo_bien.html', {'form':form})
