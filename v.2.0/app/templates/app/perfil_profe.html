@@ -4,8 +4,21 @@
 <div class="panel panel-default">
 	<div class="panel-heading"><h2> {{ profe }} </h2></div>
 	<div class="panel-body">
-		<button><a href="{% url 'cargar_coins' %}"><span class="glyphicon glyphicon-plus"></span> Cargar coins </a></button>
-	<div ><h2> <a href="{% url 'nuevo_bloque' %}"><span class="glyphicon glyphicon-plus"></span></a> | Horario Disponible </h2></div>
+		<div class="row">
+			<div class="col-sm-4">
+				<a href="{% url 'nuevo_bloque' %}"><button>
+					<span class="glyphicon glyphicon-plus"></span> Agregar bloque
+				</button></a>
+			</div>
+			<div class="col-sm-4">
+				<button><a href="{% url 'cargar_coins' %}"><span class="glyphicon glyphicon-screenshot"></span> Cargar coins </a></button>
+			</div>
+			<div class="col-sm-4"><span class="glyphicon glyphicon-copyright-mark"></span> Ha acumulado {{profe.coins}} coins</div>
+		</div>
+		
+		
+	
+	<div><h2><span class="glyphicon glyphicon-calendar"></span> Horario Disponible</h2></div>
 	<div>
 		<table class="table table-hover">
 			<thead>

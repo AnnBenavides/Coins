@@ -14,7 +14,7 @@ class BloqueForm(forms.ModelForm):
 		model = Bloque
 		fields = ('dia','horas','valor','estado')
 
-class CargarForm(forms.Form):
+class CargaForm(forms.ModelForm):
 	
 	class Meta:
 		model = Carga

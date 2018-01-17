@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="panel panel-default">
+	<div class="panel-heading"><h2><span class="glyphicon glyphicon-time"></span> Historial</h2></div>
+	<div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Coins</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for hist in historial %}
+				<tr>
+					<td>{{hist}}</td>
+					<td>{{hist.valor}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

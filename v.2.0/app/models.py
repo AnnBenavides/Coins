@@ -30,9 +30,13 @@ class Alumno(models.Model):
 		self.save()
 
 	def gastar(self, gasto):
-		self.coins = self.coins - gasto
-		self.gastado = self.gastado + gasto
-		self.save()
+		if self.coins>0:
+			self.coins = self.coins - gasto
+			self.gastado = self.gastado + gasto
+			self.save()
+			return True
+		else:
+			return False
 
 class Grupo(models.Model):
 	nroGrupo = models.IntegerField(primary_key=True)
@@ -118,10 +122,9 @@ class Historial(models.Model):
 	user = models.ForeignKey(User)
 	asunto = models.TextField()
 	valor = models.IntegerField()
-	date = timezone.now()
 
 	def __str__(self):
-		return str(self.user)+" | "+ self.asunto
+		return str(self.user)+":\t"+ self.asunto
 
 class Carga(models.Model):
 	profesor = models.ForeignKey(Profesor)

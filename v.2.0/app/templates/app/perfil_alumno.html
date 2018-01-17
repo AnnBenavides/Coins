@@ -11,7 +11,7 @@
 				{{ alumno }}
 				<br>
 				<i> - Grupo {{ alumno.grupo }} - </i>
-				<br>
+				<p>Tiene <span class="glyphicon glyphicon-copyright-mark"></span> {{ alumno.coins }}</p>
 				<button type="button" class="btn btn-info"><a href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span> 2</button>
 			</div>
 		</div>

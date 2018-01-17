@@ -21,9 +21,12 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="content container">	
-	            {% block content %}
+            <div class="content container"> 
+                {% block content %}
                 {% endblock %}
+            </div>
+            <div class="row well well-sm">
+                <a href="{% url 'historial' %}">Historial</a>
             </div>
         </body>
     </html>

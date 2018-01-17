@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Alumno, Grupo, Profesor, Bloque, Bien, Historial
 from .forms import BienForm, BloqueForm, CargaForm
-
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def getAlumno(usuario):
@@ -31,20 +31,26 @@ def perfil_alumno(request,pk):
 def ayuda(request,pk):
 	user = getProfesor(request.user)
 	alumno = get_object_or_404(Alumno, pk=pk)
-	alumno.cargar(2)
-	nombre = "Compra ayuda a "+str(alumno)
-	h = Historial.objects.create(user=user, asunto=nombre, valor='2')
-	return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
-
+	if (alumno.cargar(bloque.valor)):
+		alumno.cargar(2)
+		nombre = "Compra ayuda a "+str(alumno)
+		h = Historial.objects.create(user=user, asunto=nombre, valor='2')
+		return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
+	else:
+		histo = Historial.objects.all().order_by('-id')
+		return render(request, 'app/historial.html', {'historial': histo })
 
 def bien(request,pk):
 	user =request.user
 	bien = get_object_or_404(Bien, pk=pk)
-	alumno = getAlumno(request.user)
-	alumno.cargar(bien.valor)
-	nombre = "Compra de bien "+str(alumno)
-	h = Historial.objects.create(user=request.user, asunto=nombre, valor=bien.valor)
-	return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
+	alumno = getAlumno(user)
+	if (alumno.cargar(bien.valor)):
+		nombre = "Compra de bien "+str(alumno)
+		h = Historial.objects.create(user=user, asunto=nombre, valor=bien.valor)
+		return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
+	else:
+		histo = Historial.objects.all().order_by('-id')
+		return render(request, 'app/historial.html', {'historial': histo })
 
 def nuevo_bien(request):
 	user =request.user	
@@ -55,7 +61,8 @@ def nuevo_bien(request):
 			profe = getProfesor(request.user)
 			h = Historial.objects.create(user=request.user, asunto='Crear bien', valor='0')
 			post.save()
-			return render(request, 'app/perfil_profe.html', {'profe' : profe})
+			histo = Historial.objects.all().order_by('-id')
+			return render(request, 'app/historial.html', {'historial': histo })
 	else:
 		form = BienForm()
 		return render(request,'app/nuevo_bien.html', {'form':form})
@@ -68,7 +75,8 @@ def nuevo_bloque(request):
 			bloque.profe = getProfesor(request.user)
 			bloque.save()
 			h = Historial.objects.create(user=request.user, asunto='Crear bloque', valor=bloque.valor)
-			return render(request, 'app/perfil_profe.html', {'profe' : bloque.profe})
+			histo = Historial.objects.all().order_by('-id')
+			return render(request, 'app/historial.html', {'historial': histo })
 	else:
 		form = BloqueForm()
 		return render(request, 'app/nuevo_bloque.html', {'form':form})
@@ -82,7 +90,8 @@ def editar_bloque(request,pk):
 			bloque.profe = getProfesor(request.user)
 			bloque.save()
 			h = Historial.objects.create(user=request.user, asunto='Cambio en bloque', valor=bloque.valor)
-			return render(request, 'app/perfil_profe.html', {'profe' : bloque.profe})
+			histo = Historial.objects.all().order_by('-id')
+			return render(request, 'app/historial.html', {'historial': histo })
 	else:
 		form = BloqueForm()
 		return render(request, 'app/nuevo_bloque.html', {'form':form})
@@ -91,11 +100,19 @@ def editar_bloque(request,pk):
 def comprar_bloque(request,pk):
 	bloque = get_object_or_404(Bloque, pk=pk)
 	alumno = getAlumno(request.user)
-	alumno.cargar(bien.valor)
-	bloque.comprado(alumno.grupo)
-	nombre = "Compra bloque "+str(bloque.profe)
-	h = Historial.objects.create(user=request.user, asunto=nombre, valor=bloque.valor)
-	return users_list(request)
+	if (alumno.cargar(bloque.valor)):
+		bloque.comprado(alumno.grupo)
+		nombre = "Compra bloque "+str(bloque.profe)
+		h = Historial.objects.create(user=request.user, asunto=nombre, valor=bloque.valor)
+		histo = Historial.objects.all().order_by('-id')
+		return render(request, 'app/historial.html', {'historial': histo })
+	else:
+		profesores = Profesor.objects.all()
+		alumnos = Alumno.objects.all().order_by('grupo')
+		bienes = Bien.objects.all()
+		user = request.user
+		return render(request, 'app/users_list.html', {'profesores' : profesores, 'alumnos' : alumnos, 'bienes' : bienes})
+
 
 def borrar_bloque(request,pk):
 	bloque = get_object_or_404(Bloque, pk=pk)
@@ -104,9 +121,10 @@ def borrar_bloque(request,pk):
 	nombre = "Borrar bloque "+str(bloque)
 	bloque.delete()
 	h = Historial.objects.create(user=request.user, asunto=nombre, valor=0)
-	return users_list(request)
+	histo = Historial.objects.all().order_by('-id')
+	return render(request, 'app/historial.html', {'historial': histo })
 
-def cargar_coins(request, pk, coin):
+def cargar_coins(request):
 	if request.method == "POST":
 		form = CargaForm(request.POST)
 		if form.is_valid():
@@ -118,4 +136,8 @@ def cargar_coins(request, pk, coin):
 			return render(request, 'app/perfil_alumno.html', {'alumno' : carga.alumno})
 	else:
 		form = CargaForm()
-		return render(request, 'app/cargar_coins.html', {'form':form})
+		return render(request, 'app/cargar_coins.html', {'form': form })
+
+def historial(request):
+	histo = Historial.objects.all().order_by('-id')
+	return render(request, 'app/historial.html', {'historial': histo })
