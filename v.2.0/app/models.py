@@ -48,11 +48,11 @@ class Grupo(models.Model):
 class Bloque(models.Model):
 	idBloque = models.AutoField(primary_key=True)
 	profe = models.ForeignKey(Profesor)
-	DIAS_CHOICES = (("21","Lunes"),
-			("22","Martes"),
-			("23","Miercoles"),
-			("24","Jueves"),
-			("25","Viernes"),
+	DIAS_CHOICES = (("21","Lunes 21"),
+			("22","Martes 22"),
+			("23","Miercoles 23"),
+			("24","Jueves 24"),
+			("25","Viernes 25"),
 			)
 	HORAS_CHOICES = (
 			("01","14:00 - 14:15"),
@@ -75,7 +75,11 @@ class Bloque(models.Model):
 	dia = models.CharField(max_length=2,choices=DIAS_CHOICES, default="22")
 	horas = models.CharField(max_length=2,choices=HORAS_CHOICES, default="01")
 	valor = models.IntegerField(default=1)
-	ESTADOS_CHOICES = (("0","Ausente"),("1","Presente"),("2","Comprado"),)
+	ESTADOS_CHOICES = (
+		("0","Ausente"),
+		("1","Presente"),
+		("2","Comprado"),
+		)
 	estado = models.CharField(max_length=1,choices=ESTADOS_CHOICES, default="0")
 	grupo = models.ForeignKey(Grupo, blank=True, null=True)
 
@@ -96,6 +100,12 @@ class Bloque(models.Model):
 		self.grupo = nroGrupo
 		self.profe.cargar(self.valor)
 		self.save()
+	def getDia(self):
+		return self.get_dia_display()
+	def getHoras(self):
+		return self.get_horas_display()
+	def getEstado():
+		return self.get_estado_display()
 
 class Bien(models.Model):
 	nombre = models.CharField(max_length=50)

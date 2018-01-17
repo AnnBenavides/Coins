@@ -24,7 +24,7 @@ def perfil_profe(request,pk):
 	bloques = Bloque.objects.filter(profe=profe).order_by('dia')
 	user = request.user
 	if (user.is_authenticated):
-		return render(request, 'app/perfil_profe.html', {'profe' : profe, 'bloques':bloques})
+		return render(request, 'app/perfil_profe.html', {'profe' : profe, 'bloques': bloques})
 	else:
 		return redirect('login.html')
 	
@@ -77,7 +77,6 @@ def nuevo_bloque(request):
 		if form.is_valid():
 			bloque = form.save(commit=False)
 			bloque.profe = getProfesor(request.user)
-			bloque.grupo = 0
 			bloque.save()
 			h = Historial.objects.create(user=request.user, asunto='Crear bloque', valor=bloque.valor)
 			return render(request, 'app/perfil_profe.html', {'profe' : bloque.profe})
@@ -85,14 +84,13 @@ def nuevo_bloque(request):
 		form = BloqueForm()
 		return render(request, 'app/nuevo_bloque.html', {'form':form})
 
-def ediar_bloque(request,pk):
+def editar_bloque(request,pk):
 	bloque = get_object_or_404(Bloque, pk=pk)
 	if request.method == "POST":
-		form = BloqueForm(request.POST, intance=bloque)
+		form = BloqueForm(request.POST, instance=bloque)
 		if form.is_valid():
 			bloque = form.save(commit=False)
 			bloque.profe = getProfesor(request.user)
-			bloque.grupo = 0
 			bloque.save()
 			h = Historial.objects.create(user=request.user, asunto='Cambio en bloque', valor=bloque.valor)
 			return render(request, 'app/perfil_profe.html', {'profe' : bloque.profe})
@@ -109,7 +107,7 @@ def comprar_bloque(request,pk):
 		bloque.comprado(alumno.grupo)
 		nombre = "Compra bloque "+str(bloque.profe)
 		h = Historial.objects.create(user=request.user, asunto=nombre, valor=bloque.valor)
-		return render(request, 'app/perfil_profe.html', {'profe' : bloque.profe})
+		return users_list(request)
 	else:
 		return redirect('login.html')
 
@@ -121,5 +119,17 @@ def bloque_ausente(request,pk):
 		nombre = "Bloque ausente"
 		h = Historial.objects.create(user=request.user, asunto=nombre, valor='0')
 		return render(request, 'app/perfil_profe.html', {'profe' : profe})
+	else:
+		return redirect('login.html')
+
+def borrar_bloque(request,pk):
+	bloque = get_object_or_404(Bloque, pk=pk)
+	user =request.user
+	if (user.is_authenticated):
+		profesor = getProfesor(request.user)
+		nombre = "Borrar bloque "+str(bloque)
+		bloque.delete()
+		h = Historial.objects.create(user=request.user, asunto=nombre, valor=0)
+		return users_list(request)
 	else:
 		return redirect('login.html')

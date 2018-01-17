@@ -8,9 +8,9 @@ class BienForm(forms.ModelForm):
 		fields = ('nombre','valor',)
 
 
-class BlockForm(forms.ModelForm):
+class BloqueForm(forms.ModelForm):
 
 	class Meta:
 		model = Bloque
 		fields = ('dia','horas','valor','estado')
-		
+
