@@ -12,4 +12,5 @@ urlpatterns = [
         url(r'^horario/(?P<pk>[0-9]+)$', views.editar_bloque, name='editar_bloque'),
         url(r'^horario/comprar/(?P<pk>[0-9]+)$', views.comprar_bloque, name='comprar_bloque'),
         url(r'^horario/borrar/(?P<pk>[0-9]+)$', views.borrar_bloque, name='borrar_bloque'),
+        url(r'^cargar/$', views.cargar_coins, name='cargar_coins'),
     ]

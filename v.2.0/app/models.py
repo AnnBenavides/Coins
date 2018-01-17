@@ -123,8 +123,14 @@ class Historial(models.Model):
 	def __str__(self):
 		return str(self.user)+" | "+ self.asunto
 
+class Carga(models.Model):
+	profesor = models.ForeignKey(Profesor)
+	alumno = models.ForeignKey(Alumno)
+	carga = models.IntegerField()
+	asunto = models.TextField()
 
-
+	def __str__(self):
+		return self.carga
 
 
 
