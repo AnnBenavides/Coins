@@ -5,9 +5,9 @@
 	<div class="panel-body">
 		<div class="row">
 		 	{% for profesor in profesores %}
-		  		<div class="col-sm-4">
+		  		<div class="col-sm-4" align= "center">
 		  			<div>
-		  				<p><b><a href="{% url 'perfil_profe' pk=profesor.pk %}"> <span class="glyphicon glyphicon-star-empty"></span> {{ profesor }} </a></b></p>
+		  				<h4><b><a href="{% url 'perfil_profe' pk=profesor.pk %}"> <span class="glyphicon glyphicon-star-empty"></span> {{ profesor }} </a></b></h4>
 		  			</div>
 		  		</div>
 		  	{% endfor %}
@@ -17,13 +17,15 @@
 
 <div class="panel panel-default">
 		<div class="panel-heading"><h2><span class="glyphicon glyphicon-user"></span> Alumnos </h2></div>
-		<div class="panel-body">
+		<div class="panel-body" align= "center">
 			{% for alumno in alumnos %}
-			<div class="btn btn-default">
+			<div class="col-sm-2 btn-default">
 				<div>
-					<p><b><p><b><a href="{% url 'perfil_alumno' pk=alumno.pk %}"> {{ alumno }} </a></b></p></b></p>
-			  		<p><i> Grupo {{ alumno.grupo }}</i></p><br>
+					<br>
+					<p><b><a href="{% url 'perfil_alumno' pk=alumno.pk %}"> {{ alumno }} </a></b></p>
+			  		<h6><i> Grupo {{ alumno.grupo }}</i></h6>
 			  		<button type="button" class="btn btn-info"><a href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span> 2</a></button>
+			  		<br>
 				</div>
 			</div>
 			{% endfor %}

@@ -13,9 +13,10 @@ def getProfesor(usuario):
 def users_list(request):
 	profesores = Profesor.objects.all()
 	alumnos = Alumno.objects.all().order_by('grupo')
+	grupos = Grupo.objects.all()
 	bienes = Bien.objects.all()
 	user = request.user
-	return render(request, 'app/users_list.html', {'profesores' : profesores, 'alumnos' : alumnos, 'bienes' : bienes})
+	return render(request, 'app/users_list.html', {'profesores' : profesores, 'alumnos' : alumnos, 'bienes' : bienes, 'grupos' : grupos,})
 
 def perfil_profe(request,pk):
 	profe = get_object_or_404(Profesor, pk=pk)

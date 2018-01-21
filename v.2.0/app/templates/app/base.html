@@ -2,16 +2,19 @@
     <html>
         <head>
             <title>Coins System</title>
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+             <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         </head>
         </head>
         <body>
             <div class="row well well-sm">
-                <div class="col-sm-4"><h1><a href="{% url 'inicio' %}"> <span class="glyphicon glyphicon-copyright-mark"></span> Coins</a></h1></div>
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+
+                <div class="col-sm-4"><h1><a href="{% url 'home' %}"> <span class="glyphicon glyphicon-copyright-mark"></span> Coins</a></h1></div>
+                <div class="col-sm-4" align="center"><img src="http://www.edv.uchile.cl/wp-content/themes/Edv-Uchile/img/logoedv.png" alt="EdV" height="60"></div>
+                <div class="col-sm-4" align="right">
                     {% if user.is_authenticated %}
                       Hi {{ user.username }}!
                       <p><a href="{% url 'logout' %}">logout</a></p>
@@ -25,8 +28,19 @@
                 {% block content %}
                 {% endblock %}
             </div>
-            <div class="row well well-sm">
-                <a href="{% url 'historial' %}">Historial</a>
+             <div class="row well well-sm">
+                <div class="col-sm-4"><a href="{% url 'historial' %}">Historial</a></div>
+                <div class="col-sm-4" align="center">Sistema creado por <a href="https://github.com/AnnBenavides">Ann Benavides</a> bajo licencia MIT</div>
+                <div class="col-sm-4" align="right">
+                    {% if user.is_authenticated %}
+                      Hi {{ user.username }}!
+                      <p><a href="{% url 'logout' %}">logout</a></p>
+                    {% else %}
+                      <p>You are not logged in</p>
+                      <a href="{% url 'login' %}">login</a>
+                    {% endif %}
+                </div>
+                
             </div>
         </body>
     </html>

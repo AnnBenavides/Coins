@@ -3,6 +3,13 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
+class Grupo(models.Model):
+	nroGrupo = models.IntegerField(primary_key=True)
+	nombre = models.CharField(max_length=30, null=True)
+
+	def __str__(self):
+		return str(self.nroGrupo)+". "+self.nombre
+
 class Profesor(models.Model):
 	user = models.ForeignKey(User)
 	name = models.CharField(max_length=60)
@@ -20,7 +27,7 @@ class Alumno(models.Model):
 	name = models.CharField(max_length=60)
 	coins = models.IntegerField(default=0)
 	gastado = models.IntegerField(default=0)
-	grupo = models.IntegerField(blank=True, null=True)
+	grupo = models.ForeignKey(Grupo,blank=True, null=True)
 
 	def __str__(self):
 		return self.name
@@ -38,16 +45,9 @@ class Alumno(models.Model):
 		else:
 			return False
 
-class Grupo(models.Model):
-	nroGrupo = models.IntegerField(primary_key=True)
-	usr1 = models.ForeignKey(Alumno, related_name='1+')
-	usr2 = models.ForeignKey(Alumno, related_name='2+')
-	usr3 = models.ForeignKey(Alumno, related_name='3+')
-	usr4 = models.ForeignKey(Alumno, related_name='4+')
-	usr5 = models.ForeignKey(Alumno, related_name='5+',blank=True, null=True)
-
-	def __str__(self):
-		return str(self.nroGrupo)
+	def asignarGrupo(self, nro):
+		self.grupo = nro
+		self.save()
 
 class Bloque(models.Model):
 	idBloque = models.AutoField(primary_key=True)
