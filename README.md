@@ -1,5 +1,6 @@
 # Coins
 Administrador de compra y venta restringida para el curso [FM307] Innovación y Tecnologia de EdV
+Este sitio ha sido [desplegado en PythonAnywhere](http://annbenavides.pythonanywhere.com) desde Enero 2018 hasta Abril del mismo año
 
 # Version 2 (Verano 2018)
 ## Requerimientos
