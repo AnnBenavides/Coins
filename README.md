@@ -9,12 +9,12 @@ Administrador de compra y venta restringida para el curso [FM307] Innovación y 
   - Bootstrap
 
 ## Instalar Python
-## En Windows
+### En Windows
 Puedes descargar desde el [sitio de Python](https://www.python.org/downloads/) una versión superior a 3.4.3 e instalar el archivo .msi. Es importante recordar la ruta en donde se ha insalado Python.
 
 En la segunsa pantalla del asistente, _Customize_, ve hasta abajo y elige la opción _"Add python.exe to the Path"_ .
 
-## En Linux
+### En Linux
 Desde la terminal:
 ```sh
 ~$ sudo apt-get install python3.4
