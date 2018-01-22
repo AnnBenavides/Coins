@@ -28,7 +28,7 @@
                 {% block content %}
                 {% endblock %}
             </div>
-            <div class="row well well-sm">
+            <footer class="row well well-sm">
                 <div class="col-sm-4"><a href="{% url 'historial' %}">Historial</a></div>
                 <div class="col-sm-4" align="center">Sistema creado por <a href="https://github.com/AnnBenavides">Ann Benavides</a> bajo licencia MIT</div>
                 <div class="col-sm-4" align="right">
@@ -39,8 +39,7 @@
                       <p>You are not logged in</p>
                       <a href="{% url 'login' %}">login</a>
                     {% endif %}
-                </div>
-                
-            </div>
+                </div> 
+            </footer>
         </body>
     </html>
