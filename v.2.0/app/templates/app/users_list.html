@@ -1,13 +1,13 @@
 {% extends 'app/base.html' %}
 {% block content %}
-<div class="panel panel-default">
+<div class="panel panel-warning">
 	<div class="panel-heading"><h2><span class="glyphicon glyphicon-star"></span> Profesores </h2></div>
 	<div class="panel-body">
 		<div class="row">
 		 	{% for profesor in profesores %}
 		  		<div class="col-sm-4" align= "center">
 		  			<div>
-		  				<h4><b><a href="{% url 'perfil_profe' pk=profesor.pk %}"> <span class="glyphicon glyphicon-star-empty"></span> {{ profesor }} </a></b></h4>
+		  				<h4><b><a class="text-warning"href="{% url 'perfil_profe' pk=profesor.pk %}"> <span class="glyphicon glyphicon-star-empty"></span> {{ profesor }} </a></b></h4>
 		  				<h6><i>Taller {{ profesor.taller }}</i></h6>
 		  			</div>
 		  		</div>
@@ -16,7 +16,7 @@
 	</div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-info">
 		<div class="panel-heading"><h2><span class="glyphicon glyphicon-user"></span> Alumnos </h2></div>
 		<div class="panel-body" align= "center">
 			{% for alumno in alumnos %}
@@ -25,7 +25,7 @@
 					<br>
 					<p><b><a href="{% url 'perfil_alumno' pk=alumno.pk %}"> {{ alumno }} </a></b></p>
 			  		<h6><i> Grupo {{ alumno.group }} </i></h6>
-			  		<button type="button" class="btn btn-info"><a href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span> 2</a></button>
+			  		<button type="button" class="btn btn-info btn-block"><a class="small text-info" href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span> 2</a></button>
 			  		<br>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 	</div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-success">
 	<div class="panel-heading"><h2><a href="{% url 'nuevo_bien' %}"><span class="glyphicon glyphicon-plus"></span></a> | <span class="glyphicon glyphicon-gift"></span> Herramientas y Materiales    </h2></div>
 	<div class="panel-body">
 		<div>
@@ -41,7 +41,7 @@
 		  		<div class="btn btn-default">
 		  			<div>
 		  				<p><b>{{ bien.nombre }}</b></p><br>
-			  		<button type="button" class="btn btn-info"><a href="{% url 'bien' pk=bien.pk %}">Comprar por <span class="glyphicons glyphicons-shopping-cart"></span> {{ bien.valor }} </a></button>
+			  		<button type="button" class="btn btn-success btn-block"><a class="small text-success" href="{% url 'bien' pk=bien.pk %}">Comprar por <span class="glyphicons glyphicons-shopping-cart"></span> {{ bien.valor }} </a></button>
 		  			</div>
 		  		</div>
 		  	{% endfor %}
