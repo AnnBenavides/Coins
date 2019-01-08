@@ -12,7 +12,7 @@ def getProfesor(usuario):
 
 def users_list(request):
 	profesores = Profesor.objects.all()
-	alumnos = Alumno.objects.all().order_by('grupo')
+	alumnos = Alumno.objects.all().order_by('group')
 	grupos = Grupo.objects.all()
 	bienes = Bien.objects.all()
 	user = request.user
