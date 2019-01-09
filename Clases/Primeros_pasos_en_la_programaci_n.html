@@ -1,0 +1,290 @@
+<html>
+  <head>
+    <title>Taller de programación Básica</title>
+  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  	<meta name="description" content="Lógica básica para programar" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <h1>Taller de programación básica</h1>
+        En este taller aprenderemos la lógica y componentes básicos para poder trabajar con cualquier lenguaje de programación.
+
+        <h2> Elementos comunes en los lenguajes de programación</h2>
+          <h3><span class="glyphicon glyphicon-floppy-disk"></span> Variables simples</h3>
+          Las variables son espacios de memoria utilizados para guardar distintos tipos de datos, ya sea de forma permanente o temporal.
+          Hay 5 tipos básicos de variables:
+          <ul>
+            <li><b>Integer (int) </b>: numeros enteros</li>
+            <li><b>Float </b>: numeros decimales</li>
+            <li><b>Char </b>: símbolo o caracter</li>
+            <li><b>String </b>: o palabra, es un conjunto de chars</li>
+            <li><b>Boolean </b>: variable binaria (verdadero o falso, 0 ó 1)</li>
+          </ul>
+          Hay lenguajes de programación en los que no necesitas diferenciar el tipo de variable al momento de declararla (crearla).
+          También podemos categorizar las variables según su "tiempo de vida", es decir, cuanto duran en memoria desde que se crean
+           hasta que se dejan de usar o son eliminadas. Estan las variables globales que existen durante todo el prograblama y se
+           puede acceder a ellas desde cualquier función; y las variables locales o temporales que sólo existe dentro de una función,
+           condicional o ciclo.
+
+          <h3><span class="glyphicon glyphicon-exclamation-sign"></span> Condicionales</h3>
+          Los condicionales son sistemas que nos permiten ejecutar cierto código si alguna condición se cumple, de lo contrario es como si noe existiera.
+           Hay tres tipos de condicionales básicos: if, elseif (elif) y else.
+          <pre><code>
+            if (condicion1){
+               instrucciones que se ejecutaran si la condicion1 es cierta
+            }<br>
+            else if (condicion2){
+              si la condicion1 no se cumple pero la condición2 sí, se ejecuan estas instrucciones
+            }<br>
+            else {
+              si condicion1 y condicion2 no se cumplen se ejecutarán la instrucciones de este bloque
+            }
+          </code></pre>
+          <h3><span class="glyphicon glyphicon-refresh"></span> Ciclos</h3>
+          Los ciclos o bucles son otro tipo de condicionales que repetiran las instrucciones mientras cierta condición se cumpla.
+          Hay dos tipos de ciclos:
+          <ul>
+            <li><b>For</b> : la condición contiene una variable que aumenta o disminuye y que debe estar en un rango determinado, una vez salga de estos limites el ciclo se detiene</li>
+            <li><b>While</b> : se ejecuta siempre y cuando la condición se cumpla</li>
+          </ul>
+          <pre><code>
+            for ( variable x está entre los valores xmin y xmax ; aumenta x en y ){
+              intrucciones que se cumplirán siempre y cuando x esté en el rango pedido
+            }
+            while ( condicion ){
+              intrucciones que se cumplirán siempre y cuando condición se cumpla
+            }
+          </code></pre>
+          Ambos tipos de bucles tiene el mismo alcance y su uso suele estar determinado por el gusto del progrmador.
+          <h3><span class="glyphicon glyphicon-wrench"></span> Funciones</h3>
+          Las funciones son una forma amigable para el programador de llamar cierta pieza de código o procesar datos sin tener que escrbir excesivo código. Para las funcione stenemos los siguientes componentes escenciales:
+          <ul>
+            <li><b>Nombre de la función</b>: debe ser único en todo el programa</li>
+            <li><b>Párametros o argumentos</b>: variables que recibirá la función con las cuales trabajará, puede no tener ninguno</li>
+            <li><b>Variables de salida  o retorno</b>: una vez terminadas todas las instrucciones de la función esta entrega un resultado</li>
+          </ul>
+          <pre><code>
+            nombr_funcion ( parametro1, parametro2, ... , parametroN){
+              //instrucciones
+              retorna variableFinal
+            }
+          </code></pre>
+        <hr>
+        <h2>Lenguajes de programación</h2>
+
+        <h3 id="#java"><span class="glyphicon glyphicon-console"></span> Java</h3>
+        Java es un lenguaje de programación basado en C, imperativo y orientado a objetos.
+        Reconocido por ser ejecutable en cualquier sistema operativo (el primer
+        lenguaje en lograrlo), tambien tiene su propio recolector de basura (no
+         tienes que liberar memoria, lo hace solo) y además es el más popular al
+         momento de hacer aplicaciones cliente-servidor.
+         <br> Es importante tener en cuenta que tras cada instrucción se debe terminar con un punto y coma (;), si no habrá problemas de compilación.
+        <br><center><img src="https://cdn1.iconfinder.com/data/icons/MetroStation-PNG/128/MB__java.png" alt="logo Java"></center><br>
+        <p><b><span class="glyphicon glyphicon-floppy-disk"></span> Variables</b></p>
+          <p>Java requiere que declares previamente el tipo de variable que se almacenará</p>
+          <pre class="brush: java"><code>
+            /* Comentarios
+            *  largos
+            */
+            // Comentarios cortos
+
+            //Variables básicas
+            int variableInteger = 1;
+            float variableFloat = 3.14;
+            char variableChar = 'c';
+            String variableString = "Hola Mundo";
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-list"></span> Objetos y Listas</b></p>
+          <p>Los objetos y listas son variables compuestas,es decir, son espacios
+             de memoria que almacenan más de un tipo de variable. Los objetos pueden
+             almacenar tipos diferentes de variables, mientras que la lista solo
+             puede guardar un tipo de variable. </p>
+          <pre class="brush: java"><code>
+            //creación de objeto
+            public class Objeto1{
+              int entero;
+              String palabra;
+
+              Objeto1(String p, int n){
+                entero=n;
+                palabra=p;
+              }
+            }
+            //Declaración de objeto
+            Objeto1 obj = new Objeto1 ("Hola Mundo",12);
+
+            //Declaración de lista de integer
+            int [] enteros = new int[n]; // donde n es el largo de la lista
+            //acceso a ciertas posiciones de la lista
+            int[0] = 0; //primer elemento de la lista
+            int[n-1] = 10; //último elemento de la lista
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-exclamation-sign"></span> Condicionales</b></p>
+          <p></p>
+          <pre><code>
+            if ( 0 == 1){ // si 0 es igual a 1
+              //instrucciones
+            } else if ( 0 >= 1) { // si 0 es mayor o igual a 1
+              //instrucciones
+            } else {
+              //instrucciones
+            }
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-refresh"></span> Ciclos</b></p>
+          <p></p>
+          <pre class="brush: java"><code>
+            for ( int i = 0 ; i < 3 ; i++ ){
+              //partiendo con la variable i en 0, si esta es menor a 3 se ejecuta el ciclo
+              // una vez termine el ciclo se le suma 1 a la variable i
+            }
+
+            int i=0;
+            while (i < 3){
+              //instrucciones
+              i++;
+            }//hace exactamente lo mismo que el anterior for
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-wrench"></span> Funciones</b></p>
+          <p>La sintaxix de funciones en Java tiene la siguiente estructura: <br>
+          <center><h6><code><i>permiso</i> tipo_variable_de_retorno <b>nombre_funcion</b> ( <i>tipo_variable</i> nombre_parametro1, <i>tipo_variable</i> nombre_parametro2)</code></h6></center>
+          Donde "permiso" pueden ser public, private, protected o static; tipo_variable_de_retorno y tipo_variable puede ser un tipo de variable básico o compuesto; nombre_funcion el el nombre de dicha función.
+          <br>Llamaremos firma a la combinación única de la tupla permiso, tipo de variable de retorno, nombre de la funcion y cantidad y tipo de los parámetros.
+          </p>
+          <pre class="brush: java"><code>
+            //creación de objeto
+            public class Objeto1{
+              int entero;
+              String palabra;
+
+              Objeto1(String p, int n){ //Constructor
+                entero=n;
+                palabra=p;
+              }
+              //funcion 1
+              public int get_entero(){
+                return entero; //entrega el valor de la variable global "entero"
+              }
+              //funcion 2
+              public String get_palabra(){
+                return palabra;
+              }
+            }
+
+            Objeto1 obj = new Objeto1 ("Hola Mundo",12); //Declaración de objeto
+            obj.get_entero; //entrega 12
+            obj.get_String; //entrega "Hola Mundo"
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-search"></span> IDE y Documentación</b></p>
+          <p></p>
+          <ul>
+            <li><a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon2">Eclipse IDE </a></li>
+            <li><a href="http://www.bluej.org/versions.html">BlueJ IDE </a></li>
+            <li><a href="https://docs.oracle.com/javase/tutorial/getStarted/index.html">Documentación Java </a></li>
+            <li><a href="https://www.codecademy.com/es/learn/learn-java">Tutotial básico de Java </a></li>
+          </ul>
+
+        <h3 id="#python"><span class="glyphicon glyphicon-console"></span> Python</h3>
+        Python es un lenguaje de programación de alto nivel e interpretativo,
+         últimamente muy popular por su simpleza y fácil manejo. Aquí lo importante
+          para no tener errores de compilación es que tu código esté bien identado (tabulaciones).
+          <br><center><img src="https://cdn-img.easyicon.net/png/5404/540419.gif" alt="logo Python"></center><br>
+        <p><b><span class="glyphicon glyphicon-floppy-disk"></span> Variables</b></p>
+          <p>Aquí al momento de declarar una variable basta con darle un nombre y un valor</p>
+          <pre class="brush: python"><code>
+            ...
+            Comentario largo
+            ...
+
+            # Comentario corto
+
+            x = 1             # int
+            x = 3.14          # float
+            x = 'c'           # char
+            x = "Hola Mundo"  # String
+            x = True          # boolean
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-list"></span> Listas y Tuplas</b></p>
+          <p>Las listas y tuplas son variables compuestas,es decir, son espacios
+             de memoria que almacenan más de un tipo de variable. Las listas almacenan una cantidad modificable de variables, mientras que en una tupla se crea y no se puede modificar su contenido</p>
+          <pre class="brush: python"><code>
+            lista = [ "abc" , 42 , 3.14 ]
+            lista[0]    # acceder al primer elemento de la lista, retorna "abc"
+            lista[-1]   # accede al último elemento de la lista, retorn 3.14
+            lista[0:2]  # mostar los elementos de la lisa con indices del 0 al 2
+
+            tupla = ( "abc" , 42, 3.14 )
+            tupla[0]        # accede al primer elemento de la tupla, retorna "abc"
+            tupla[1] = 14   # lanza una excepcion y no modifica la tupla
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-exclamation-sign"></span> Condicionales</b></p>
+          <pre class="brush: python"><code>
+            if 0 == 1:
+              #luego de una tabulacion se escriben las instrucciones
+              #si 0 es igual a uno se ejecutan esas instrucciones
+            elif 0 >= 1 : #si 0 es mayor o igual a 1
+              #luego de una tabulacion se escriben las instrucciones
+            else:
+              #luego de una tabulacion se escriben las instrucciones
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-refresh"></span> Ciclos</b></p>
+          <p>En este caso el for es utilizado para recorrer Listas o Strings, mientras que el while es usado para condiciones numericas o binarias (verdadero o falso)</p>
+          <pre class="brush: python"><code>
+            # ejemplos FOR
+            lista = [ 1, 2, 3]
+            for elemento in lista:
+              print elemento
+            # retorno:
+            >> 1
+            >> 2
+            >> 3
+
+            palabra = "abcdef"
+            for letra in palabra:
+              print letra, # escribiendo coma hacemos que no haya salto de linea
+            #retorno:
+            >> a b c d e f
+
+            #ejemplo WHILE
+            i = 0
+            while i < 3:
+              #instrucciones
+              print i
+              i += 1
+            #retorno:
+            >> 0
+            >> 1
+            >> 2
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-wrench"></span> Funciones</b></p>
+          <p>Para crear una función se usa la palabra <b>def</b>, seguida del nombre de la función y sus parámetros. Para retornar algún valor usaremos "return"</p>
+          <pre class="brush: python"><code>
+            def suma(x,y):
+              return x + y
+
+            suma(4,3) # retorna 7
+          </code></pre>
+        <p><b><span class="glyphicon glyphicon-search"></span> IDE y Documentación</b></p>
+          <p></p>
+          <ul>
+            <li><a href="http://www.pydev.org/download.html">Extención de Eclipse: PyDev IDE</a></li>
+            <li><a href="https://sourceforge.net/projects/pyscripter/">PyScripter IDE</a></li>
+            <li><a href="https://www.jetbrains.com/pycharm/">PyCharm IDE</a></li>
+            <li><a href="https://wiki.python.org/moin/BeginnersGuide">Documentación de Python</a></li>
+            <li><a href="https://www.codecademy.com/learn/python">Tutorial básico de Python</a></li>
+          </ul>
+
+          </ul>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+
+    <hr><div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">Cualquier consulta envienme un correo a<br> andrea.benavidesj@gmail.com</div>
+      <div class="col-sm-4"></div>
+    </div>
+  </body>
+</html>

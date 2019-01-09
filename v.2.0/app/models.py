@@ -132,7 +132,7 @@ class Carga(models.Model): #Modelo para cargar monedas a alumnos
 	profesor = models.ForeignKey(Profesor)
 	alumno = models.ForeignKey(Alumno)
 	carga = models.IntegerField()
-	asunto = models.TextField(blank=True, null=True)
+	asunto = models.CharField(max_length=70,blank=True, null=True)
 
 	def __str__(self):
 		return self.carga

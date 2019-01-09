@@ -19,17 +19,21 @@
 <div class="panel panel-info">
 		<div class="panel-heading"><h2><span class="glyphicon glyphicon-user"></span> Alumnos </h2></div>
 		<div class="panel-body" align= "center">
-			{% for alumno in alumnos %}
-			<div class="col-sm-2 btn-default">
-				<div>
-					<br>
-					<p><b><a href="{% url 'perfil_alumno' pk=alumno.pk %}"> {{ alumno }} </a></b></p>
-			  		<h6><i> Grupo {{ alumno.group }} </i></h6>
-			  		<button type="button" class="btn btn-info btn-block"><a class="small text-info" href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span> 2</a></button>
-			  		<br>
-				</div>
-			</div>
-			{% endfor %}
+			<table class="table table-striped">
+				<thead></thead>
+				<tbody>
+				{% for alumno in alumnos %}
+				<tr>
+					<td><b><a href="{% url 'perfil_alumno' pk=alumno.pk %}"> {{ alumno }} </a></b></td>
+			  		<td><i class="text-info"> {{ alumno.group }} </i></td>
+			  		<td>
+			  			<button type="button" class="btn btn-info btn-block"><a class="small text-info" href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span> 2</a></button>
+			  		</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+
 	</div>
 </div>
 
