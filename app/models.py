@@ -11,7 +11,7 @@ class Grupo(models.Model):
 		return self.nombre
 
 class Profesor(models.Model):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, on_delete='PROTECT')
 	name = models.CharField(max_length=60)
 	coins_collected = models.IntegerField(default=0)
 	taller = models.CharField(max_length=130,null=True)
@@ -24,11 +24,11 @@ class Profesor(models.Model):
 		self.save()
 
 class Alumno(models.Model):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, on_delete='PROTECT')
 	name = models.CharField(max_length=60)
 	coins_remain = models.IntegerField(default=0)
 	coins_used = models.IntegerField(default=0)
-	group = models.ForeignKey(Grupo,blank=True, null=True)
+	group = models.ForeignKey(Grupo,blank=True, null=True, on_delete='PROTECT')
 
 	def __str__(self):
 		return self.name
@@ -52,7 +52,7 @@ class Alumno(models.Model):
 
 class Bloque(models.Model): #modelo de bloques que pueden comprarse
 	idBloque = models.AutoField(primary_key=True)
-	profe = models.ForeignKey(Profesor)
+	profe = models.ForeignKey(Profesor, on_delete='PROTECT')
 	DIAS_CHOICES = (("14","Lunes 14"),
 			("15","Martes 15"),
 			("16","Miercoles 16"),
@@ -84,7 +84,7 @@ class Bloque(models.Model): #modelo de bloques que pueden comprarse
 		("2","Comprado"),
 		)
 	estado = models.CharField(max_length=1,choices=ESTADOS_CHOICES, default="0")
-	grupo = models.ForeignKey(Grupo, blank=True, null=True)
+	grupo = models.ForeignKey(Grupo, blank=True, null=True, on_delete='PROTECT')
 
 	def __str__(self):
 		return str(self.profe)+": "+self.dia+" "+self.horas
@@ -121,7 +121,7 @@ class Bien(models.Model): #modelo de materiales
 		return self.nombre+": "+str(self.valor)
 
 class Historial(models.Model):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, on_delete='PROTECT')
 	asunto = models.TextField()
 	valor = models.IntegerField()
 
@@ -129,8 +129,8 @@ class Historial(models.Model):
 		return str(self.user)+":\t"+ self.asunto
 
 class Carga(models.Model): #Modelo para cargar monedas a alumnos
-	profesor = models.ForeignKey(Profesor)
-	alumno = models.ForeignKey(Alumno)
+	profesor = models.ForeignKey(Profesor, on_delete='PROTECT')
+	alumno = models.ForeignKey(Alumno, on_delete='PROTECT')
 	carga = models.IntegerField()
 	asunto = models.CharField(max_length=70,blank=True, null=True)
 
