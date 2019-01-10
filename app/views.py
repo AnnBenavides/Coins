@@ -134,7 +134,7 @@ def cargar_coins(request):
 			carga.save()
 			nombre = "Carga a "+ str(carga.alumno)
 			h = Historial.objects.create(user=request.user, asunto='Crear bloque', valor=carga.carga)
-			return render(request, 'app/perfil_alumno.html', {'alumno' : carga.alumno})
+			return render(request, 'app/historial.html', {'historial': h })
 	else:
 		form = CargaForm()
 		return render(request, 'app/cargar_coins.html', {'form': form })
