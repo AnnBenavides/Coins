@@ -105,8 +105,8 @@ def comprar_bloque(request,pk):
 	bloque = get_object_or_404(Bloque, pk=pk)
 	alumno = getAlumno(request.user)
 	if (alumno.coins_remain>=bloque.valor):
+		bloque.comprado(alumno.group)
 		alumno.gastar(bloque.valor)
-		bloque.comprado(alumno.grupo)
 		nombre = "Compra bloque "+str(bloque.profe)
 		h = Historial.objects.create(user=request.user, asunto=nombre, valor=bloque.valor)
 		histo = Historial.objects.all().order_by('-id')
