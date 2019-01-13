@@ -16,11 +16,10 @@
                 <div class="col-sm-4" align="center"><img src="http://www.edv.uchile.cl/wp-content/themes/Edv-Uchile/img/logoedv.png" alt="EdV" height="60"></div>
                 <div class="col-sm-4" align="right">
                     {% if user.is_authenticated %}
-                      Hi {{ user.username }}!
-                      <p><a href="{% url 'logout' %}">logout</a></p>
+                      Hola {{ user.username }}!
+                      <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
                     {% else %}
-                      <p>You are not logged in</p>
-                      <a href="{% url 'login' %}">login</a>
+                      <p>No has <a href="{% url 'login' %}">inicaido sesión</a></p>
                     {% endif %}
                 </div>
             </div>
@@ -33,11 +32,10 @@
                 <div class="col-sm-4" align="center">Sistema creado por <a href="https://github.com/AnnBenavides">Ann Benavides</a> bajo licencia MIT</div>
                 <div class="col-sm-4" align="right">
                     {% if user.is_authenticated %}
-                      Hi {{ user.username }}!
-                      <p><a href="{% url 'logout' %}">logout</a></p>
+                      Hola {{ user.username }}!
+                      <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
                     {% else %}
-                      <p>You are not logged in</p>
-                      <a href="{% url 'login' %}">login</a>
+                      <p>No has <a href="{% url 'login' %}">inicaido sesión</a></p>
                     {% endif %}
                 </div>
                 

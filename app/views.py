@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Alumno, Grupo, Profesor, Bloque, Bien, Historial
+from .models import Alumno, Grupo, Profesor, Bloque, Bien, Historial, Ayuda
 from .forms import BienForm, BloqueForm, CargaForm
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -30,14 +30,15 @@ def perfil_alumno(request,pk):
 	return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
 	
 def ayuda(request,pk):
-	user = getAlumno(request.user)
+	user = request.user
+	comp = getAlumno(user)
 	alumno = get_object_or_404(Alumno, pk=pk)
 	costo_ayuda= 2
-	if (user.coins_remain>=costo_ayuda):
-		user.gastar(costo_ayuda)
+	if (comp.coins_remain>=costo_ayuda):
 		alumno.cargar(costo_ayuda)
-		nombre = "Compra ayuda a "+str(alumno)
-		h = Historial.objects.create(user=user, asunto=nombre, valor='2')
+		comp.gastar(costo_ayuda)
+		a = Ayuda.objects.create(comprador=comp,servidor=alumno,costo=costo_ayuda)
+		h = Historial.objects.create(user=comp, asunto=str(a), valor=costo_ayuda)
 		return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
 	else:
 		histo = Historial.objects.all().order_by('-id')
@@ -105,8 +106,8 @@ def comprar_bloque(request,pk):
 	bloque = get_object_or_404(Bloque, pk=pk)
 	alumno = getAlumno(request.user)
 	if (alumno.coins_remain>=bloque.valor):
-		bloque.comprado(alumno.group)
 		alumno.gastar(bloque.valor)
+		bloque.comprado(alumno.grupo)
 		nombre = "Compra bloque "+str(bloque.profe)
 		h = Historial.objects.create(user=request.user, asunto=nombre, valor=bloque.valor)
 		histo = Historial.objects.all().order_by('-id')

@@ -113,6 +113,15 @@ class Bloque(models.Model): #modelo de bloques que pueden comprarse
 	def getEstado():
 		return self.get_estado_display()
 
+class Ayuda(models.Model):
+	comprador = models.ForeignKey(Alumno, related_name='comprador')
+	servidor = models.ForeignKey(Alumno, related_name='servidor')
+	costo = models.IntegerField(default = 2)
+
+	def __str__(self):
+		return self.comprador+" ha comprado ayuda a "+self.servidor+" por "+str(self.costo)
+
+
 class Bien(models.Model): #modelo de materiales
 	nombre = models.CharField(max_length=50)
 	valor = models.IntegerField(default=1)

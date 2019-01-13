@@ -14,4 +14,6 @@ urlpatterns = [
         url(r'^horario/borrar/(?P<pk>[0-9]+)$', views.borrar_bloque, name='borrar_bloque'),
         url(r'^cargar/$', views.cargar_coins, name='cargar'),
         url(r'^historial/$', views.historial, name='historial'),
+        url(r'^logout/$', 'django.contrib.auth.views.logout',
+                          {'next_page': '/'})
     ]

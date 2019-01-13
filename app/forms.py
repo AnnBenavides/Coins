@@ -1,5 +1,5 @@
 from django import forms
-from .models import Bien, Bloque,Carga
+from .models import Bien, Bloque,Carga,Ayuda
 
 class BienForm(forms.ModelForm):
 
@@ -19,4 +19,5 @@ class CargaForm(forms.ModelForm):
 	class Meta:
 		model = Carga
 		fields = ('alumno','carga','asunto',)
+
 
