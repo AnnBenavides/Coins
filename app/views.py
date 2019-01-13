@@ -30,10 +30,12 @@ def perfil_alumno(request,pk):
 	return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
 	
 def ayuda(request,pk):
-	user = getProfesor(request.user)
+	user = getAlumno(request.user)
 	alumno = get_object_or_404(Alumno, pk=pk)
-	if (alumno.cargar(bloque.valor)):
-		alumno.cargar(2)
+	costo_ayuda= 2
+	if (user.coins_remain>=costo_ayuda):
+		user.gastar(costo_ayuda)
+		alumno.cargar(costo_ayuda)
 		nombre = "Compra ayuda a "+str(alumno)
 		h = Historial.objects.create(user=user, asunto=nombre, valor='2')
 		return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
@@ -45,7 +47,8 @@ def bien(request,pk):
 	user =request.user
 	bien = get_object_or_404(Bien, pk=pk)
 	alumno = getAlumno(user)
-	if (alumno.cargar(bien.valor)):
+	if (alumno.coins_remain>=bien.valor):
+		alumno.gastar(bien.valor)
 		nombre = "Compra de bien "+str(alumno)
 		h = Historial.objects.create(user=user, asunto=nombre, valor=bien.valor)
 		return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
@@ -101,7 +104,8 @@ def editar_bloque(request,pk):
 def comprar_bloque(request,pk):
 	bloque = get_object_or_404(Bloque, pk=pk)
 	alumno = getAlumno(request.user)
-	if (alumno.cargar(bloque.valor)):
+	if (alumno.coins_remain>=bloque.valor):
+		alumno.gastar(bloque.valor)
 		bloque.comprado(alumno.grupo)
 		nombre = "Compra bloque "+str(bloque.profe)
 		h = Historial.objects.create(user=request.user, asunto=nombre, valor=bloque.valor)
@@ -133,8 +137,10 @@ def cargar_coins(request):
 			carga.profesor = getProfesor(request.user)
 			carga.save()
 			nombre = "Carga a "+ str(carga.alumno)
-			h = Historial.objects.create(user=request.user, asunto='Crear bloque', valor=carga.carga)
-			return render(request, 'app/historial.html', {'historial': h })
+			carga.alumno.cargar(carga.carga) 
+			h = Historial.objects.create(user=request.user, asunto='Regalo de monedas', valor=carga.carga)
+			histo = Historial.objects.all().order_by('-id')
+			return render(request, 'app/historial.html', {'historial': histo })
 	else:
 		form = CargaForm()
 		return render(request, 'app/cargar_coins.html', {'form': form })
