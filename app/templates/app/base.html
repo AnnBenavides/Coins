@@ -12,9 +12,8 @@
         <body>
             <div class="row well well-sm">
 
-                <div class="col-sm-4"><h1><a href="{% url 'home' %}"> <span class="glyphicon glyphicon-bitcoin"></span>ula</a></h1></div>
-                <div class="col-sm-4" align="center"><img src="http://www.edv.uchile.cl/wp-content/themes/Edv-Uchile/img/logoedv.png" alt="EdV" height="50"></div>
-                <div class="col-sm-4" align="right">
+                <div class="col-sm-4"><h1><a href="{% url 'home' %}"> <span class="glyphicon glyphicon-bitcoin"></span>ULA</a></h1></div>
+                <div class="col-sm-8" align="right">
                     {% if user.is_authenticated %}
                       Hola {{ user.username }}!
                       <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
@@ -28,17 +27,9 @@
                 {% endblock %}
             </div>
              <footer class="row well well-sm fixed-bottom">
-                <div class="col-sm-4"><a href="{% url 'historial' %}">Historial</a></div>
-                <div class="col-sm-4" align="center">Sistema creado por <a href="https://github.com/AnnBenavides">Ann Benavides</a> bajo licencia MIT</div>
-                <div class="col-sm-4" align="right">
-                    {% if user.is_authenticated %}
-                      Hola {{ user.username }}!
-                      <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
-                    {% else %}
-                      <p>No has <a href="{% url 'login' %}">inicaido sesión</a></p>
-                    {% endif %}
-                </div>
-
+                <div class="col-sm-2" align="center"><img src="http://www.edv.uchile.cl/wp-content/themes/Edv-Uchile/img/logoedv.png" alt="EdV" height="50"></div>
+                <div class="col-sm-2"><a href="{% url 'historial' %}">Historial</a></div>
+                <div class="col-sm-8" align="center">Sistema creado por <a href="https://github.com/AnnBenavides">Ann Benavides</a> bajo licencia MIT</div>
             </footer>
         </body>
     </html>

@@ -37,8 +37,7 @@ def ayuda(request,pk):
 	if (comp.coins_remain>=costo_ayuda):
 		alumno.cargar(costo_ayuda)
 		comp.gastar(costo_ayuda)
-		a = Ayuda.objects.create(comprador=comp,servidor=alumno,costo=costo_ayuda)
-		h = Historial.objects.create(user=comp, asunto=str(a), valor=costo_ayuda)
+		h = Historial.objects.create(user=user, asunto="ayuda de "+str(alumno), valor=costo_ayuda)
 		return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
 	else:
 		histo = Historial.objects.all().order_by('-id')
@@ -107,7 +106,7 @@ def comprar_bloque(request,pk):
 	alumno = getAlumno(request.user)
 	if (alumno.coins_remain>=bloque.valor):
 		alumno.gastar(bloque.valor)
-		bloque.comprado(alumno.grupo)
+		bloque.comprado(alumno.group)
 		nombre = "Compra bloque "+str(bloque.profe)
 		h = Historial.objects.create(user=request.user, asunto=nombre, valor=bloque.valor)
 		histo = Historial.objects.all().order_by('-id')

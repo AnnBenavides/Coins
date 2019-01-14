@@ -45,7 +45,7 @@
 		  		<div class="col-sm-4">
 		  			<div class="alert alert-success text-center">
 		  				<p><b>{{ bien.nombre }}</b></p><br>
-			  		<a class="small text-success" href="{% url 'bien' pk=bien.pk %}"><button type="button" class="btn btn-success">Comprar por <span class="glyphicons glyphicons-shopping-cart"></span> {{ bien.valor }}</button></a>
+			  		<a class="small text-success" href="{% url 'bien' pk=bien.pk %}"><button type="button" class="btn btn-success">Comprar por <span class="glyphicons glyphicons-bitcoin"></span> {{ bien.valor }}</button></a>
 		  			</div>
 		  		</div>
 		  	{% endfor %}

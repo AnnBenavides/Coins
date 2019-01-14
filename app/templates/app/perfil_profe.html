@@ -6,19 +6,19 @@
 	<div class="panel-body">
 
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-4 text-center">
 				<a href="{% url 'nuevo_bloque' %}"><button class="btn btn-info">
 					<span class="glyphicon glyphicon-plus"></span> Agregar bloque
 				</button></a>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4 text-center">
 				<a href="{% url 'cargar' %}"><button class="btn btn-link"><span class="glyphicon glyphicon-screenshot"></span> Cargar coins </button></a>
 			</div>
-			<div class="col-sm-4"><span class="glyphicon glyphicon-bitcoin"></span> Ha acumulado {{profe.coins_collected}} coins</div>
+			<div class="col-sm-4 text-center"><span class="glyphicon glyphicon-bitcoin"></span> Ha acumulado {{profe.coins_collected}} coins</div>
 		</div>
-		
-		
-	
+
+
+
 	<div><h2><span class="glyphicon glyphicon-calendar"></span> Horario Disponible</h2></div>
 	<div>
 		<table class="table table-hover">
@@ -54,14 +54,14 @@
 					</td>
 					{% endifequal %}
 					{% ifequal bloque.estado "2" %}
-					<td><button class="btn btn-danger">{{bloque.grupo}}</button></td>
+					<td><div class="text-danger">{{bloque.grupo}}</div></td>
 					{% endifequal %}
 					{% ifequal bloque.estado "0" %}
 					<td>
 						<a href="{% url 'borrar_bloque' pk=bloque.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 					</td>
 					{% endifequal %}
-					
+
 
 				</tr>
 				{% endfor %}

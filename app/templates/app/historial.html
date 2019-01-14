@@ -8,13 +8,15 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th>Coins</th>
+					<th></th>
+					<th><span class="glyphicon glyphicon-bitcoin"></span></th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for hist in historial %}
 				<tr>
-					<td>{{hist}}</td>
+					<td><b>{{hist.user}}</b></td>
+					<td>{{hist.asunto}}</td>
 					<td>{{hist.valor}}</td>
 				</tr>
 				{% endfor %}
