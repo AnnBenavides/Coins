@@ -5,14 +5,13 @@
 	<div class="panel-heading"><h2> {{ alumno }} </h2></div>
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-sm-6"><h1> <span class="glyphicon glyphicon-info-sign"></span> </h1>
+			<div class="col-sm-6 text-center"><h1> <span class="glyphicon glyphicon-user"></span> </h1>
 			</div>
 			<div class="col-sm-6"> 
-				{{ alumno }}
-				<br>
-				<i> - Grupo {{ alumno.group }} </i>
-				<p>Tiene <span class="glyphicon glyphicon-copyright-mark"></span> {{ alumno.coins_remain }}</p>
-				<button type="button" class="btn btn-info"><a href="{% url 'ayuda' pk=alumno.pk %}">Ayuda por <span class="glyphicon glyphicon-copyright-mark"></span> 2</button>
+				<h2> Grupo {{ alumno.group }} </h2>
+				<p>Tiene <span class="glyphicon glyphicon-bitcoin"></span> {{ alumno.coins_remain }}</p>
+				<p> Ha gastado <span class="glyphicon glyphicon-bitcoin"></span> {{ alumno.coins_used }}</p>
+				<a href="{% url 'ayuda' pk=alumno.pk %}"><button type="button" class="btn btn-info">Comprar ayuda por <span class="glyphicon glyphicon-bitcoin"></span> 2</button></a>
 			</div>
 		</div>
 	</div>

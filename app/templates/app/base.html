@@ -12,7 +12,7 @@
         <body>
             <div class="row well well-sm">
 
-                <div class="col-sm-4"><h1><a href="{% url 'home' %}"> <span class="glyphicon glyphicon-copyright-mark"></span> Coins</a></h1></div>
+                <div class="col-sm-4"><h1><a href="{% url 'home' %}"> <span class="glyphicon glyphicon-bitcoin"></span>ula</a></h1></div>
                 <div class="col-sm-4" align="center"><img src="http://www.edv.uchile.cl/wp-content/themes/Edv-Uchile/img/logoedv.png" alt="EdV" height="60"></div>
                 <div class="col-sm-4" align="right">
                     {% if user.is_authenticated %}
@@ -27,7 +27,7 @@
                 {% block content %}
                 {% endblock %}
             </div>
-             <footer class="row well well-sm">
+             <footer class="row well well-sm fixed-bottom">
                 <div class="col-sm-4"><a href="{% url 'historial' %}">Historial</a></div>
                 <div class="col-sm-4" align="center">Sistema creado por <a href="https://github.com/AnnBenavides">Ann Benavides</a> bajo licencia MIT</div>
                 <div class="col-sm-4" align="right">
