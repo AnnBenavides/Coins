@@ -13,7 +13,7 @@
             <div class="row well well-sm">
 
                 <div class="col-sm-4"><h1><a href="{% url 'home' %}"> <span class="glyphicon glyphicon-bitcoin"></span>ula</a></h1></div>
-                <div class="col-sm-4" align="center"><img src="http://www.edv.uchile.cl/wp-content/themes/Edv-Uchile/img/logoedv.png" alt="EdV" height="60"></div>
+                <div class="col-sm-4" align="center"><img src="http://www.edv.uchile.cl/wp-content/themes/Edv-Uchile/img/logoedv.png" alt="EdV" height="50"></div>
                 <div class="col-sm-4" align="right">
                     {% if user.is_authenticated %}
                       Hola {{ user.username }}!
@@ -23,7 +23,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="content container"> 
+            <div class="content container">
                 {% block content %}
                 {% endblock %}
             </div>
@@ -38,7 +38,7 @@
                       <p>No has <a href="{% url 'login' %}">inicaido sesión</a></p>
                     {% endif %}
                 </div>
-                
+
             </footer>
         </body>
     </html>

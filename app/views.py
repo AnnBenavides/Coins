@@ -23,12 +23,12 @@ def perfil_profe(request,pk):
 	bloques = Bloque.objects.filter(profe=profe).order_by('dia')
 	user = request.user
 	return render(request, 'app/perfil_profe.html', {'profe' : profe, 'bloques': bloques})
-	
+
 def perfil_alumno(request,pk):
 	alumno = get_object_or_404(Alumno, pk=pk)
 	user = request.user
 	return render(request, 'app/perfil_alumno.html', {'alumno' : alumno})
-	
+
 def ayuda(request,pk):
 	user = request.user
 	comp = getAlumno(user)
@@ -58,7 +58,7 @@ def bien(request,pk):
 		return render(request, 'app/historial.html', {'historial': histo })
 
 def nuevo_bien(request):
-	user =request.user	
+	user =request.user
 	if request.method == "POST":
 		form = BienForm(request.POST)
 		if form.is_valid():
@@ -138,8 +138,8 @@ def cargar_coins(request):
 			carga.profesor = getProfesor(request.user)
 			carga.save()
 			nombre = "Carga a "+ str(carga.alumno)
-			carga.alumno.cargar(carga.carga) 
-			h = Historial.objects.create(user=request.user, asunto='Regalo de monedas', valor=carga.carga)
+			carga.alumno.cargar(carga.carga)
+			h = Historial.objects.create(user=request.user, asunto='Regalo de monedas a'+str(carga.alumno), valor=carga.carga)
 			histo = Historial.objects.all().order_by('-id')
 			return render(request, 'app/historial.html', {'historial': histo })
 	else:

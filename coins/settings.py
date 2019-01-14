@@ -25,7 +25,7 @@ SECRET_KEY = 'm^t@e$spc$a9+v+_#7x&fzu883u@5!&5e4%$8exzok+t^3r@f6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['haineann.pythonanywhere.com']
 
 
 # Application definition
@@ -104,3 +104,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

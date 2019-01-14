@@ -25,9 +25,9 @@
 				{% for alumno in alumnos %}
 				<tr>
 					<td><b><a href="{% url 'perfil_alumno' pk=alumno.pk %}"> {{ alumno }} </a></b></td>
-			  		<td><i class="text-info"> {{ alumno.group }} </i></td>
-			  		<td>
-			  			<a class="small text-info" href="{% url 'ayuda' pk=alumno.pk %}"><button type="button" class="btn btn-info btn-block">Ayuda por <span class="glyphicon glyphicon-bitcoin"></span> 2</button></a>
+                    <td><i>{{alumno.group}}</i></td>
+			  		<td class="alert alert-info text-center">
+			  			<b>{{alumno.coins_remain}}</b><span class="glyphicon glyphicon-bitcoin"></span>
 			  		</td>
 				</tr>
 				{% endfor %}
@@ -42,10 +42,10 @@
 	<div class="panel-body">
 		<div>
 		 	{% for bien in bienes %}
-		  		<div class="btn btn-default">
-		  			<div>
+		  		<div class="col-sm-4">
+		  			<div class="alert alert-success text-center">
 		  				<p><b>{{ bien.nombre }}</b></p><br>
-			  		<a class="small text-success" href="{% url 'bien' pk=bien.pk %}"><button type="button" class="btn btn-success btn-block">Comprar por <span class="glyphicons glyphicons-shopping-cart"></span> {{ bien.valor }}</button></a>
+			  		<a class="small text-success" href="{% url 'bien' pk=bien.pk %}"><button type="button" class="btn btn-success">Comprar por <span class="glyphicons glyphicons-shopping-cart"></span> {{ bien.valor }}</button></a>
 		  			</div>
 		  		</div>
 		  	{% endfor %}
