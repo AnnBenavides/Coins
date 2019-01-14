@@ -7,12 +7,12 @@
 
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="{% url 'nuevo_bloque' %}"><button>
+				<a href="{% url 'nuevo_bloque' %}"><button class="btn btn-info">
 					<span class="glyphicon glyphicon-plus"></span> Agregar bloque
 				</button></a>
 			</div>
 			<div class="col-sm-4">
-				<a href="{% url 'cargar' %}"><button><span class="glyphicon glyphicon-screenshot"></span> Cargar coins </button></a>
+				<a href="{% url 'cargar' %}"><button class="btn btn-link"><span class="glyphicon glyphicon-screenshot"></span> Cargar coins </button></a>
 			</div>
 			<div class="col-sm-4"><span class="glyphicon glyphicon-bitcoin"></span> Ha acumulado {{profe.coins_collected}} coins</div>
 		</div>
@@ -49,8 +49,7 @@
 					<td>{{ bloque.getHoras}}</td>
 					{% ifequal bloque.estado "1" %}
 					<td>
-						<a href="{% url 'comprar_bloque' pk=bloque.pk %}"><button class="btn btn-warning">
-							<span class="glyphicon glyphicon-plus"></span> {{bloque.valor}} </button>
+						<a href="{% url 'comprar_bloque' pk=bloque.pk %}"><button class="btn btn-warning">Comprar por <span class="glyphicon glyphicon-bitcoin"></span> {{bloque.valor}} </button>
 						</a>
 					</td>
 					{% endifequal %}
